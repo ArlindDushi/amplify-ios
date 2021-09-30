@@ -5,10 +5,10 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
-@testable import AWSPinpointAnalyticsPlugin
+@testable import AWSLocationGeoPlugin
 import XCTest
 
-class AWSPinpointAnalyticsPluginResetTests: AWSPinpointAnalyticsPluginTestBase {
+class AWSLocationGeoPluginResetTests: AWSLocationGeoPluginTestBase {
     func testReset() {
         let completedInvoked = expectation(description: "onComplete is invoked")
         analyticsPlugin.reset {

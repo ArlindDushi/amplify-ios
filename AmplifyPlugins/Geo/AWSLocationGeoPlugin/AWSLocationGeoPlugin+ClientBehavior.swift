@@ -29,7 +29,8 @@ extension AWSLocationGeoPlugin {
                        placeIndexName: String?,
                        completionHandler: @escaping Geo.ResultsHandler<[Geo.Place]>) {
 
-        assert(pluginConfig.defaultSearchIndex != nil, GeoPluginErrorConstant.missingSearchConfiguration.errorDescription)
+        assert(pluginConfig.defaultSearchIndex != nil,
+               GeoPluginErrorConstant.missingSearchConfiguration.errorDescription)
 
         let request = AWSLocationSearchPlaceIndexForTextRequest()!
         request.indexName = placeIndexName ?? pluginConfig.defaultSearchIndex
@@ -76,7 +77,8 @@ extension AWSLocationGeoPlugin {
                        placeIndexName: String?,
                        completionHandler: @escaping Geo.ResultsHandler<[Geo.Place]>) {
 
-        assert(pluginConfig.defaultSearchIndex != nil, GeoPluginErrorConstant.missingSearchConfiguration.errorDescription)
+        assert(pluginConfig.defaultSearchIndex != nil,
+               GeoPluginErrorConstant.missingSearchConfiguration.errorDescription)
 
         let request = AWSLocationSearchPlaceIndexForPositionRequest()!
         request.indexName = placeIndexName ?? pluginConfig.defaultSearchIndex

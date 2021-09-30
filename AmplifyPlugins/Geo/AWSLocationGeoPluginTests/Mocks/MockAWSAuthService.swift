@@ -10,7 +10,7 @@ import AWSMobileClient
 import AWSPluginsCore
 import Foundation
 
-@testable import AWSPinpointAnalyticsPlugin
+@testable import AWSLocationGeoPlugin
 
 // This should be moved over to common test package https://github.com/aws-amplify/amplify-ios/issues/21
 public class MockAWSAuthService: AWSAuthServiceBehavior {

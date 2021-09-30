@@ -88,7 +88,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Amplify: 6402de6b8e46f3228b59fef3dfe379ebbfb0e0f1
-  AmplifyPlugins: 94bb3e7e006b41f82e8a0a1dbbc48925d9edbe4c
+  AmplifyPlugins: 54c9d562f11f9afff6c7f26a7fde03fd1b44132e
   AmplifyTestCommon: cf9d5a7a3bb697f8cd5fe4d8fae0f968033abdd0
   AWSAuthCore: e33e7d1c2a7e6c08a026865f9396b0ef870faac3
   AWSCognitoIdentityProvider: 4119e1492b23fc408a18c6dafe06888ef03c96e3
@@ -104,4 +104,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 48d1574dddce5cef7bdb7b05b06fc588ee22956e
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.2

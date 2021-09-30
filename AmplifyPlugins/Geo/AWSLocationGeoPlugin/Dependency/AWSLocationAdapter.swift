@@ -33,31 +33,12 @@ class AWSLocationAdapter: AWSLocationBehavior {
         location
     }
 
-    /// Geocodes free-form text, such as an address, name, city, or region to allow you
-    /// to search for Places or points of interest. Includes the option to apply
-    /// additional parameters to narrow your list of results.
-    ///
-    /// You can search for places near a given position using BiasPosition, or filter
-    /// results within a bounding box using FilterBBox. Providing both parameters
-    /// simultaneously returns an error.
-    /// - Parameters:
-    ///   - forText: A container for the necessary parameters to execute the
-    ///   SearchPlaceIndexForText service method.
-    ///   - completionHandler: The completion handler to call when the search request is
-    ///   complete.
     func searchPlaceIndex(forText: AWSLocationSearchPlaceIndexForTextRequest,
                           completionHandler: ((AWSLocationSearchPlaceIndexForTextResponse?,
                                                          Error?) -> Void)?) {
         location.searchPlaceIndex(forText: forText, completionHandler: completionHandler)
     }
 
-    /// Reverse geocodes a given coordinate and returns a legible address. Allows you to
-    /// search for Places or points of interest near a given position.
-    /// - Parameters:
-    ///   - forPosition: A container for the necessary parameters to execute the
-    ///   SearchPlaceIndexForPosition service method.
-    ///   - completionHandler: The completion handler to call when the search request is
-    ///   complete.
     func searchPlaceIndex(forPosition: AWSLocationSearchPlaceIndexForPositionRequest,
                           completionHandler: ((AWSLocationSearchPlaceIndexForPositionResponse?,
                                                          Error?) -> Void)?) {

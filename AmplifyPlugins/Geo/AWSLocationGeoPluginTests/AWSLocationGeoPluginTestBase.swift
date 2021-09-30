@@ -7,12 +7,12 @@
 
 @testable import Amplify
 @testable import AmplifyTestCommon
-@testable import AWSPinpointAnalyticsPlugin
+@testable import AWSLocationGeoPlugin
 import XCTest
 
-class AWSPinpointAnalyticsPluginTestBase: XCTestCase {
-    var analyticsPlugin: AWSPinpointAnalyticsPlugin!
-    var mockPinpoint: MockAWSPinpoint!
+class AWSLocationGeoPluginTestBase: XCTestCase {
+    var analyticsPlugin: AWSLocationGeoPlugin!
+    var mockAWSLocation: MockAWSLocation!
     var authService: MockAWSAuthService!
     var appSessionTracker: MockAppSessionTracker!
 
@@ -33,7 +33,7 @@ class AWSPinpointAnalyticsPluginTestBase: XCTestCase {
     override func setUp() {
         analyticsPlugin = AWSPinpointAnalyticsPlugin()
 
-        mockPinpoint = MockAWSPinpoint()
+        mockAWSLocation = MockAWSLocation()
         authService = MockAWSAuthService()
         appSessionTracker = MockAppSessionTracker(
             trackAppSessions: AWSPinpointAnalyticsPluginConfiguration.defaultTrackAppSession,

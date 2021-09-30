@@ -6,13 +6,13 @@
 //
 
 import Amplify
-import AWSPinpoint
-@testable import AWSPinpointAnalyticsPlugin
+import AWSLocation
+@testable import AWSLocationGeoPlugin
 import CwlPreconditionTesting
 import XCTest
 
 // swiftlint:disable:next type_name
-class AWSPinpointAnalyticsPluginClientBehaviorTests: AWSPinpointAnalyticsPluginTestBase {
+class AWSPinpointAnalyticsPluginClientBehaviorTests: AWSLocationGeoPluginTestBase {
     let testName = "testName"
     let testIdentityId = "identityId"
     let testEmail = "testEmail"

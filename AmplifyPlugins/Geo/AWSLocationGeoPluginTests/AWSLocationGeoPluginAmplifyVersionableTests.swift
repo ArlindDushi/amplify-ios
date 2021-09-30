@@ -6,13 +6,13 @@
 //
 
 import XCTest
-import AWSPinpointAnalyticsPlugin
+import AWSLocationGeoPlugin
 
 // swiftlint:disable:next type_name
-class AWSPinpointAnalyticsPluginAmplifyVersionableTests: XCTestCase {
+class AWSLocationGeoPluginAmplifyVersionableTests: XCTestCase {
 
     func testVersionExists() {
-        let plugin = AWSPinpointAnalyticsPlugin()
+        let plugin = AWSLocationGeoPlugin()
         XCTAssertNotNil(plugin.version)
     }
 

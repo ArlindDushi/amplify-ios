@@ -9,7 +9,7 @@ import Amplify
 @testable import AWSPinpointAnalyticsPlugin
 import XCTest
 
-class AWSPinpointAnalyticsPluginConfigureTests: AWSPinpointAnalyticsPluginTestBase {
+class AWSPinpointAnalyticsPluginConfigureTests: AWSLocationGeoPluginTestBase {
     // MARK: Plugin Key test
 
     func testPluginKey() {
