@@ -11,39 +11,21 @@
 import XCTest
 
 class AWSLocationGeoPluginTestBase: XCTestCase {
-    var analyticsPlugin: AWSLocationGeoPlugin!
+    var geoPlugin: AWSLocationGeoPlugin!
     var mockAWSLocation: MockAWSLocation!
     var authService: MockAWSAuthService!
-    var appSessionTracker: MockAppSessionTracker!
 
-    let testAppId = "56e6f06fd4f244c6b202bc1234567890"
-    let testRegion = "us-east-1"
-    let testAutoFlushInterval = 30
-    let testTrackAppSession = true
-    let testAutoSessionTrackingInterval = 10
-
-    var plugin: HubCategoryPlugin {
-        guard let plugin = try? Amplify.Hub.getPlugin(for: "awsHubPlugin"),
-            plugin.key == "awsHubPlugin" else {
-            fatalError("Could not access awsHubPlugin")
-        }
-        return plugin
-    }
+    let testRegion = "us-east-2"
 
     override func setUp() {
-        analyticsPlugin = AWSPinpointAnalyticsPlugin()
+        geoPlugin = AWSLocationGeoPlugin()
 
         mockAWSLocation = MockAWSLocation()
         authService = MockAWSAuthService()
-        appSessionTracker = MockAppSessionTracker(
-            trackAppSessions: AWSPinpointAnalyticsPluginConfiguration.defaultTrackAppSession,
-            autoSessionTrackingInterval: AWSPinpointAnalyticsPluginConfiguration.defaultAutoSessionTrackingInterval
-        )
 
-        analyticsPlugin.configure(pinpoint: mockPinpoint,
-                                  authService: authService,
-                                  autoFlushEventsTimer: nil,
-                                  appSessionTracker: appSessionTracker)
+        geoPlugin.configure(locationService: mockAWSLocation,
+                            authService: authService,
+                            pluginConfig: <#T##AWSLocationGeoPluginConfiguration#>)
 
         Amplify.reset()
         let config = AmplifyConfiguration()
@@ -56,6 +38,6 @@ class AWSLocationGeoPluginTestBase: XCTestCase {
 
     override func tearDown() {
         Amplify.reset()
-        analyticsPlugin.reset {}
+        geoPlugin.reset {}
     }
 }

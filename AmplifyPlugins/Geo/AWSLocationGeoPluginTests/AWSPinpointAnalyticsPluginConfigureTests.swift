@@ -13,7 +13,7 @@ class AWSPinpointAnalyticsPluginConfigureTests: AWSLocationGeoPluginTestBase {
     // MARK: Plugin Key test
 
     func testPluginKey() {
-        let pluginKey = analyticsPlugin.key
+        let pluginKey = geoPlugin.key
         XCTAssertEqual(pluginKey, "awsPinpointAnalyticsPlugin")
     }
 

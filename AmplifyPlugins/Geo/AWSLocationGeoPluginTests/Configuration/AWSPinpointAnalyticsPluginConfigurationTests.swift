@@ -12,23 +12,23 @@ import XCTest
 
 // swiftlint:disable:next type_name
 class AWSPinpointAnalyticsPluginConfigurationTests: XCTestCase {
-    let testAppId = "testAppId"
-    let appId: JSONValue = "testAppId"
-    let testRegion = "us-east-1"
-    let region: JSONValue = "us-east-1"
-    let testAutoFlushInterval = 300
-    let autoFlushInterval: JSONValue = 300
-    let testTrackAppSession = false
-    let trackAppSession: JSONValue = false
-    let testAutoSessionTrackingInterval = 100
-    let autoSessionTrackingInterval: JSONValue = 100
-    let pinpointAnalyticsPluginConfiguration = JSONValue(
-        dictionaryLiteral:
-        (AWSPinpointAnalyticsPluginConfiguration.appIdConfigKey, "testAppId"),
-        (AWSPinpointAnalyticsPluginConfiguration.regionConfigKey, "us-east-1")
-    )
-    let regionConfiguration = JSONValue(dictionaryLiteral:
-        (AWSPinpointAnalyticsPluginConfiguration.regionConfigKey, "us-east-1"))
+//    let testAppId = "testAppId"
+//    let appId: JSONValue = "testAppId"
+//    let testRegion = "us-east-1"
+//    let region: JSONValue = "us-east-1"
+//    let testAutoFlushInterval = 300
+//    let autoFlushInterval: JSONValue = 300
+//    let testTrackAppSession = false
+//    let trackAppSession: JSONValue = false
+//    let testAutoSessionTrackingInterval = 100
+//    let autoSessionTrackingInterval: JSONValue = 100
+//    let pinpointAnalyticsPluginConfiguration = JSONValue(
+//        dictionaryLiteral:
+//        (AWSPinpointAnalyticsPluginConfiguration.appIdConfigKey, "testAppId"),
+//        (AWSPinpointAnalyticsPluginConfiguration.regionConfigKey, "us-east-1")
+//    )
+//    let regionConfiguration = JSONValue(dictionaryLiteral:
+//        (AWSPinpointAnalyticsPluginConfiguration.regionConfigKey, "us-east-1"))
 
     func testConfigureSuccess() throws {
         let analyticsPluginConfig = JSONValue(

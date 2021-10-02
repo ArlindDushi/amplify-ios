@@ -29,8 +29,7 @@ extension AWSLocationGeoPlugin {
                        placeIndexName: String?,
                        completionHandler: @escaping Geo.ResultsHandler<[Geo.Place]>) {
 
-        assert(pluginConfig.defaultSearchIndex != nil,
-               GeoPluginErrorConstant.missingSearchConfiguration.errorDescription)
+        assert(pluginConfig.defaultSearchIndex != nil, GeoPluginConfigError.searchConfigMissing)
 
         let request = AWSLocationSearchPlaceIndexForTextRequest()!
         request.indexName = placeIndexName ?? pluginConfig.defaultSearchIndex
@@ -77,8 +76,7 @@ extension AWSLocationGeoPlugin {
                        placeIndexName: String?,
                        completionHandler: @escaping Geo.ResultsHandler<[Geo.Place]>) {
 
-        assert(pluginConfig.defaultSearchIndex != nil,
-               GeoPluginErrorConstant.missingSearchConfiguration.errorDescription)
+        assert(pluginConfig.defaultSearchIndex != nil, GeoPluginConfigError.searchConfigMissing)
 
         let request = AWSLocationSearchPlaceIndexForPositionRequest()!
         request.indexName = placeIndexName ?? pluginConfig.defaultSearchIndex
@@ -140,7 +138,7 @@ extension AWSLocationGeoPlugin {
     /// - Returns: Metadata for all available map resources.
     public func getAvailableMaps()  -> [Geo.MapStyle] {
         let mapStyles = Array(pluginConfig.maps.values)
-        assert(!mapStyles.isEmpty, GeoPluginErrorConstant.missingMapConfiguration.errorDescription)
+        assert(!mapStyles.isEmpty, GeoPluginConfigError.mapConfigMissing)
 
         return mapStyles
     }
@@ -149,7 +147,7 @@ extension AWSLocationGeoPlugin {
     /// - Returns: Metadata for the default map resource.
     public func getDefaultMap() -> Geo.MapStyle? {
         guard let mapName = pluginConfig.defaultMap, let mapStyle = pluginConfig.maps[mapName] else {
-            assertionFailure(GeoPluginErrorConstant.missingMapConfiguration.errorDescription)
+            assertionFailure(GeoPluginConfigError.mapConfigMissing)
             return nil
         }
 
