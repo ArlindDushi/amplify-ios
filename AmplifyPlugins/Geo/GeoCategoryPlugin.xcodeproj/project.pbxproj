@@ -33,7 +33,7 @@
 		B478F76B237503B800C4F92B /* MockAWSLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B478F75D237503B700C4F92B /* MockAWSLocation.swift */; };
 		B478F76C237503B800C4F92B /* MockAWSAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B478F75E237503B700C4F92B /* MockAWSAuthService.swift */; };
 		B478F76F237503B800C4F92B /* AWSPinpointAnalyticsPluginConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B478F762237503B700C4F92B /* AWSPinpointAnalyticsPluginConfigurationTests.swift */; };
-		B478F770237503B800C4F92B /* AWSPinpointAnalyticsPluginConfigureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B478F763237503B700C4F92B /* AWSPinpointAnalyticsPluginConfigureTests.swift */; };
+		B478F770237503B800C4F92B /* AWSLocationGeoPluginConfigureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B478F763237503B700C4F92B /* AWSLocationGeoPluginConfigureTests.swift */; };
 		B478F771237503B800C4F92B /* AWSLocationGeoPluginResetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B478F764237503B700C4F92B /* AWSLocationGeoPluginResetTests.swift */; };
 		B478F773237503B800C4F92B /* AWSLocationGeoPluginTestBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B478F767237503B700C4F92B /* AWSLocationGeoPluginTestBase.swift */; };
 		B478F774237503B800C4F92B /* AWSPinpointAnalyticsPluginClientBehaviorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B478F768237503B700C4F92B /* AWSPinpointAnalyticsPluginClientBehaviorTests.swift */; };
@@ -101,7 +101,7 @@
 		B478F75D237503B700C4F92B /* MockAWSLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockAWSLocation.swift; sourceTree = "<group>"; };
 		B478F75E237503B700C4F92B /* MockAWSAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockAWSAuthService.swift; sourceTree = "<group>"; };
 		B478F762237503B700C4F92B /* AWSPinpointAnalyticsPluginConfigurationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSPinpointAnalyticsPluginConfigurationTests.swift; sourceTree = "<group>"; };
-		B478F763237503B700C4F92B /* AWSPinpointAnalyticsPluginConfigureTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSPinpointAnalyticsPluginConfigureTests.swift; sourceTree = "<group>"; };
+		B478F763237503B700C4F92B /* AWSLocationGeoPluginConfigureTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSLocationGeoPluginConfigureTests.swift; sourceTree = "<group>"; };
 		B478F764237503B700C4F92B /* AWSLocationGeoPluginResetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSLocationGeoPluginResetTests.swift; sourceTree = "<group>"; };
 		B478F766237503B700C4F92B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B478F767237503B700C4F92B /* AWSLocationGeoPluginTestBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSLocationGeoPluginTestBase.swift; sourceTree = "<group>"; };
@@ -335,7 +335,7 @@
 			children = (
 				B478F768237503B700C4F92B /* AWSPinpointAnalyticsPluginClientBehaviorTests.swift */,
 				FA1C812A25868AEF006160E9 /* AWSLocationGeoPluginAmplifyVersionableTests.swift */,
-				B478F763237503B700C4F92B /* AWSPinpointAnalyticsPluginConfigureTests.swift */,
+				B478F763237503B700C4F92B /* AWSLocationGeoPluginConfigureTests.swift */,
 				B478F764237503B700C4F92B /* AWSLocationGeoPluginResetTests.swift */,
 				B478F767237503B700C4F92B /* AWSLocationGeoPluginTestBase.swift */,
 				B478F761237503B700C4F92B /* Configuration */,
@@ -843,7 +843,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B478F771237503B800C4F92B /* AWSLocationGeoPluginResetTests.swift in Sources */,
-				B478F770237503B800C4F92B /* AWSPinpointAnalyticsPluginConfigureTests.swift in Sources */,
+				B478F770237503B800C4F92B /* AWSLocationGeoPluginConfigureTests.swift in Sources */,
 				B478F76F237503B800C4F92B /* AWSPinpointAnalyticsPluginConfigurationTests.swift in Sources */,
 				FA1C812B25868AEF006160E9 /* AWSLocationGeoPluginAmplifyVersionableTests.swift in Sources */,
 				B478F769237503B800C4F92B /* MockAWSLocation+ClientBehavior.swift in Sources */,

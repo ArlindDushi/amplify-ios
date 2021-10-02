@@ -15,17 +15,20 @@ class AWSLocationGeoPluginTestBase: XCTestCase {
     var pluginConfig: AWSLocationGeoPluginConfiguration!
     var emptyPluginConfig: AWSLocationGeoPluginConfiguration!
 
+    // Plugin Test Configuration
+    let testRegion = "us-east-2"
+
+    // Map Test Configuration
+    let testMap = "testMap"
+    let testStyle = "VectorEsriStreets"
+
+    // Search Test Configuration
+    let testSearchIndex = "testSearchIndex"
+
     override func setUp() {
-        // Map Test Configuration
-        let testRegion = "us-east-2"
-        let testMap = "testMap"
-        let testStyle = "VectorEsriStreets"
         let testURLString = "https://maps.geo.\(testRegion).amazonaws.com/maps/v0/maps/\(testMap)/style-descriptor"
         let testURL = URL(string: testURLString)!
         let testMapStyle = Geo.MapStyle(mapName: testMap, style: testStyle, styleURL: testURL)
-
-        // Search Test Configuration
-        let testSearchIndex = "testSearchIndex"
 
         pluginConfig = AWSLocationGeoPluginConfiguration(region: testRegion.aws_regionTypeValue(),
                                                          regionName: testRegion,
