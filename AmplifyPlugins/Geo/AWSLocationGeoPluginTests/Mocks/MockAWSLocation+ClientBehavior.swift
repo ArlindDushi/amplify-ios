@@ -5,24 +5,29 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
-import AWSPinpoint
-@testable import AWSPinpointAnalyticsPlugin
+import AWSLocation
+@testable import AWSLocationGeoPlugin
 import Foundation
-@testable import AWSLocation
 
-extension MockAWSLocation: AWSLocationBehavior {
-    
-    func searchPlaceIndex(forText: AWSLocationSearchPlaceIndexForTextRequest,
+extension MockAWSLocation {
+
+    public func searchPlaceIndex(forText: AWSLocationSearchPlaceIndexForTextRequest,
                           completionHandler: ((AWSLocationSearchPlaceIndexForTextResponse?,
                                                Error?) -> Void)?) {
         searchPlaceIndexForTextCalled += 1
-        completionHandler(AWSLocationSearchForTextResult())
+        searchPlaceIndexForTextRequest = forText
+        if let completionHandler = completionHandler {
+            completionHandler(AWSLocationSearchPlaceIndexForTextResponse(), nil)
+        }
     }
 
-    func searchPlaceIndex(forPosition: AWSLocationSearchPlaceIndexForPositionRequest,
+    public func searchPlaceIndex(forPosition: AWSLocationSearchPlaceIndexForPositionRequest,
                           completionHandler: ((AWSLocationSearchPlaceIndexForPositionResponse?,
                                                Error?) -> Void)?) {
         searchPlaceIndexForPositionCalled += 1
-        completionHandler(AWSLocationSearchForTextResult())
+        searchPlaceIndexForPositionRequest = forPosition
+        if let completionHandler = completionHandler {
+            completionHandler(AWSLocationSearchPlaceIndexForPositionResponse(), nil)
+        }
     }
 }

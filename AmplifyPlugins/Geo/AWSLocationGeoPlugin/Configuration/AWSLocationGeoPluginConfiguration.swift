@@ -18,7 +18,7 @@ public struct AWSLocationGeoPluginConfiguration {
 
     public let regionName: String
 
-    init(config: Any?, pluginKey: String) throws {
+    init(config: Any?) throws {
         guard let configJSON = config as? JSONValue else {
             throw GeoPluginConfigError.configurationInvalid(section: .plugin)
         }

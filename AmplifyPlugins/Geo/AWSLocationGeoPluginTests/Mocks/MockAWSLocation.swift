@@ -5,7 +5,7 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
-import AWSPinpoint
+import AWSLocation
 import Foundation
 import XCTest
 
@@ -24,9 +24,9 @@ public class MockAWSLocation: AWSLocationBehavior {
 
     public init() {}
 
-    public func getEscapeHatch() -> AWSPinpoint {
+    public func getEscapeHatch() -> AWSLocation {
         getEscapeHatchCalled += 1
-        return AWSLocation
+        return AWSLocation()
     }
 }
 
@@ -35,20 +35,14 @@ extension MockAWSLocation {
         XCTAssertEqual(getEscapeHatchCalled, 1)
     }
 
-    public func verifyRemoveAttribute(forKey theKey: String) {
-        XCTAssertEqual(removeAttributeCalled, 1)
-        XCTAssertEqual(removeAttributeKey, theKey)
+    public func verifySearchPlaceIndexForText(_ request: AWSLocationSearchPlaceIndexForTextRequest) {
+        XCTAssertEqual(searchPlaceIndexForTextCalled, 1)
+        XCTAssertEqual(searchPlaceIndexForTextRequest, request)
     }
 
-    public func verifyAddMetric(_ theValue: NSNumber, forKey theKey: String) {
-        XCTAssertEqual(addMetricCalled, 1)
-        XCTAssertEqual(addMetricValue, theValue)
-        XCTAssertEqual(addMetricKey, theKey)
-    }
-
-    public func verifyRemoveMetric(forKey theKey: String) {
-        XCTAssertEqual(removeMetricCalled, 1)
-        XCTAssertEqual(removeMetricKey, theKey)
+    public func verifySearchPlaceIndexForPosition(_ request: AWSLocationSearchPlaceIndexForPositionRequest) {
+        XCTAssertEqual(searchPlaceIndexForPositionCalled, 1)
+        XCTAssertEqual(searchPlaceIndexForPositionRequest, request)
     }
 }
 

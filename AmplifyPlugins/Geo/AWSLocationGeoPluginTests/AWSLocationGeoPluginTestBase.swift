@@ -12,20 +12,39 @@ import XCTest
 
 class AWSLocationGeoPluginTestBase: XCTestCase {
     var geoPlugin: AWSLocationGeoPlugin!
-    var mockAWSLocation: MockAWSLocation!
-    var authService: MockAWSAuthService!
-
-    let testRegion = "us-east-2"
+    var pluginConfig: AWSLocationGeoPluginConfiguration!
+    var emptyPluginConfig: AWSLocationGeoPluginConfiguration!
 
     override func setUp() {
+        // Map Test Configuration
+        let testRegion = "us-east-2"
+        let testMap = "testMap"
+        let testStyle = "VectorEsriStreets"
+        let testURLString = "https://maps.geo.\(testRegion).amazonaws.com/maps/v0/maps/\(testMap)/style-descriptor"
+        let testURL = URL(string: testURLString)!
+        let testMapStyle = Geo.MapStyle(mapName: testMap, style: testStyle, styleURL: testURL)
+
+        // Search Test Configuration
+        let testSearchIndex = "testSearchIndex"
+
+        pluginConfig = AWSLocationGeoPluginConfiguration(region: testRegion.aws_regionTypeValue(),
+                                                         regionName: testRegion,
+                                                         defaultMap: testMap,
+                                                         maps: [testMap: testMapStyle],
+                                                         defaultSearchIndex: testSearchIndex,
+                                                         searchIndices: [testSearchIndex])
+
+        emptyPluginConfig = AWSLocationGeoPluginConfiguration(region: testRegion.aws_regionTypeValue(),
+                                                              regionName: testRegion,
+                                                              defaultMap: nil,
+                                                              maps: [:],
+                                                              defaultSearchIndex: nil,
+                                                              searchIndices: [])
+
         geoPlugin = AWSLocationGeoPlugin()
-
-        mockAWSLocation = MockAWSLocation()
-        authService = MockAWSAuthService()
-
-        geoPlugin.configure(locationService: mockAWSLocation,
-                            authService: authService,
-                            pluginConfig: <#T##AWSLocationGeoPluginConfiguration#>)
+        geoPlugin.locationService = MockAWSLocation()
+        geoPlugin.authService = MockAWSAuthService()
+        geoPlugin.pluginConfig = pluginConfig
 
         Amplify.reset()
         let config = AmplifyConfiguration()

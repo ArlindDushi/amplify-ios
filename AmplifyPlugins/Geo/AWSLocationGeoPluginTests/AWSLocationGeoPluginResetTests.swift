@@ -11,16 +11,13 @@ import XCTest
 class AWSLocationGeoPluginResetTests: AWSLocationGeoPluginTestBase {
     func testReset() {
         let completedInvoked = expectation(description: "onComplete is invoked")
-        analyticsPlugin.reset {
+        geoPlugin.reset {
             completedInvoked.fulfill()
         }
 
         waitForExpectations(timeout: 1)
-        XCTAssertNil(analyticsPlugin.pinpoint)
-        XCTAssertNil(analyticsPlugin.authService)
-        XCTAssertNil(analyticsPlugin.autoFlushEventsTimer)
-        XCTAssertNil(analyticsPlugin.appSessionTracker)
-        XCTAssertNil(analyticsPlugin.globalProperties)
-        XCTAssertNil(analyticsPlugin.isEnabled)
+        XCTAssertNil(geoPlugin.locationService)
+        XCTAssertNil(geoPlugin.authService)
+        XCTAssertNil(geoPlugin.pluginConfig)
     }
 }

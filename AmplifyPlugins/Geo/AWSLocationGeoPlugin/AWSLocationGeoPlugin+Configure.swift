@@ -19,7 +19,7 @@ extension AWSLocationGeoPlugin {
     /// - Throws:
     ///   - PluginError.pluginConfigurationError: If one of the configuration values is invalid or empty.
     public func configure(using configuration: Any?) throws {
-        let pluginConfiguration = try AWSLocationGeoPluginConfiguration(config: configuration, pluginKey: key)
+        let pluginConfiguration = try AWSLocationGeoPluginConfiguration(config: configuration)
         try configure(using: pluginConfiguration)
     }
 
