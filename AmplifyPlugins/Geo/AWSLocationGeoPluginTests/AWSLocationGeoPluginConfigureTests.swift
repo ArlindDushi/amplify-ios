@@ -20,41 +20,10 @@ class AWSLocationGeoPluginConfigureTests: AWSLocationGeoPluginTestBase {
     // MARK: - Configuration tests
 
     func testConfigureSuccess() {
-        // MARK: - Maps Config
-        let mapStyleJSON = JSONValue(stringLiteral: testStyle)
-        let testMapJSON = JSONValue(stringLiteral: testMap)
-
-        let mapStyleConfig = JSONValue(
-            dictionaryLiteral: (AWSLocationGeoPluginConfiguration.Node.style.key, mapStyleJSON))
-
-        let mapItemConfig = JSONValue(
-            dictionaryLiteral: (testMap, mapStyleConfig))
-
-        let mapsConfig = JSONValue(
-            dictionaryLiteral: (AWSLocationGeoPluginConfiguration.Node.items.key, mapItemConfig),
-                               (AWSLocationGeoPluginConfiguration.Node.default.key, testMapJSON))
-
-        // MARK: - Search Config
-        let searchIndexJSON = JSONValue(stringLiteral: testSearchIndex)
-        let searchItemsArrayJSON = JSONValue(arrayLiteral: searchIndexJSON)
-
-        let searchConfig = JSONValue(
-            dictionaryLiteral: (AWSLocationGeoPluginConfiguration.Node.items.key, searchItemsArrayJSON),
-                               (AWSLocationGeoPluginConfiguration.Node.default.key, searchIndexJSON))
-
-        // MARK: - Plugin Config
-
-        let regionJSON = JSONValue(stringLiteral: testRegion)
-
-        let geoPluginConfig = JSONValue(
-            dictionaryLiteral: (AWSLocationGeoPluginConfiguration.Node.region.key, regionJSON),
-                               (AWSLocationGeoPluginConfiguration.Section.maps.key, mapsConfig),
-                               (AWSLocationGeoPluginConfiguration.Section.searchIndices.key, searchConfig))
-
         geoPlugin.reset {}
 
         do {
-            try geoPlugin.configure(using: geoPluginConfig)
+            try geoPlugin.configure(using: GeoPluginTestConfig.geoPluginConfigJSON)
 
             XCTAssertNotNil(geoPlugin.locationService)
             XCTAssertNotNil(geoPlugin.authService)

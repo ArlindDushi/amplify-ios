@@ -15,30 +15,23 @@ class AWSLocationGeoPluginTestBase: XCTestCase {
     var pluginConfig: AWSLocationGeoPluginConfiguration!
     var emptyPluginConfig: AWSLocationGeoPluginConfiguration!
 
-    // Plugin Test Configuration
-    let testRegion = "us-east-2"
-
-    // Map Test Configuration
-    let testMap = "testMap"
-    let testStyle = "VectorEsriStreets"
-
-    // Search Test Configuration
-    let testSearchIndex = "testSearchIndex"
-
     override func setUp() {
-        let testURLString = "https://maps.geo.\(testRegion).amazonaws.com/maps/v0/maps/\(testMap)/style-descriptor"
-        let testURL = URL(string: testURLString)!
-        let testMapStyle = Geo.MapStyle(mapName: testMap, style: testStyle, styleURL: testURL)
+        let region = GeoPluginTestConfig.region
+        let map = GeoPluginTestConfig.map
+        let style = GeoPluginTestConfig.style
+        let searchIndex = GeoPluginTestConfig.searchIndex
+        let url = URL(string: "https://maps.geo.\(region).amazonaws.com/maps/v0/maps/\(map)/style-descriptor")!
+        let mapStyle = Geo.MapStyle(mapName: map, style: style, styleURL: url)
 
-        pluginConfig = AWSLocationGeoPluginConfiguration(region: testRegion.aws_regionTypeValue(),
-                                                         regionName: testRegion,
-                                                         defaultMap: testMap,
-                                                         maps: [testMap: testMapStyle],
-                                                         defaultSearchIndex: testSearchIndex,
-                                                         searchIndices: [testSearchIndex])
+        pluginConfig = AWSLocationGeoPluginConfiguration(region: region.aws_regionTypeValue(),
+                                                         regionName: region,
+                                                         defaultMap: map,
+                                                         maps: [map: mapStyle],
+                                                         defaultSearchIndex: searchIndex,
+                                                         searchIndices: [searchIndex])
 
-        emptyPluginConfig = AWSLocationGeoPluginConfiguration(region: testRegion.aws_regionTypeValue(),
-                                                              regionName: testRegion,
+        emptyPluginConfig = AWSLocationGeoPluginConfiguration(region: region.aws_regionTypeValue(),
+                                                              regionName: region,
                                                               defaultMap: nil,
                                                               maps: [:],
                                                               defaultSearchIndex: nil,
