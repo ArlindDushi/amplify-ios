@@ -86,15 +86,15 @@ struct GeoPluginConfigError {
 
     static func mapInvalid(mapName: String) -> PluginError {
         PluginError.pluginConfigurationError(
-            "Configuration at `maps`, `items`, \(mapName) is not a dictionary literal.",
-            "Make sure the value for `maps`, `items`, \(mapName) is a dictionary literal."
+            "Configuration at `maps`, `items`, `\(mapName)` is not a dictionary literal.",
+            "Make sure the value for `maps`, `items`, `\(mapName)` is a dictionary literal."
         )
     }
 
     static func mapStyleMissing(mapName: String) -> PluginError {
         PluginError.pluginConfigurationError(
-            "Configuration at `maps`, `items`, \(mapName) does not include `style` literal.",
-            "Make sure the value for `maps`, `items`, \(mapName) includes `style`."
+            "Configuration at `maps`, `items`, `\(mapName)` does not include `style` literal.",
+            "Make sure the value for `maps`, `items`, `\(mapName)` includes `style`."
         )
     }
 

@@ -83,7 +83,7 @@ public struct AWSLocationGeoPluginConfiguration {
     // MARK: - Private helper methods
 
     private static func getRegion(_ configObject: [String: JSONValue]) throws -> (name: String, type: AWSRegionType) {
-        guard let regionJSON = configObject["region"] else {
+        guard let regionJSON = configObject[Node.region.key] else {
             throw GeoPluginConfigError.regionMissing
         }
 
@@ -104,7 +104,7 @@ public struct AWSLocationGeoPluginConfiguration {
     }
 
     private static func getDefault(section: Section, configObject: [String: JSONValue]) throws -> String {
-        guard let defaultJSON = configObject["default"] else {
+        guard let defaultJSON = configObject[Node.default.key] else {
             throw GeoPluginConfigError.defaultMissing(section: section)
         }
 
@@ -127,7 +127,7 @@ public struct AWSLocationGeoPluginConfiguration {
     }
 
     private static func getItemsJSON(section: Section, configObject: [String: JSONValue]) throws -> JSONValue {
-        guard let itemsJSON = configObject["items"] else {
+        guard let itemsJSON = configObject[Node.items.key] else {
             throw GeoPluginConfigError.itemsMissing(section: section)
         }
         return itemsJSON
@@ -163,7 +163,7 @@ public struct AWSLocationGeoPluginConfiguration {
                 throw GeoPluginConfigError.mapInvalid(mapName: mapName)
             }
 
-            guard let styleJSON = itemObject["style"] else {
+            guard let styleJSON = itemObject[Node.style.key] else {
                 throw GeoPluginConfigError.mapStyleMissing(mapName: mapName)
             }
 

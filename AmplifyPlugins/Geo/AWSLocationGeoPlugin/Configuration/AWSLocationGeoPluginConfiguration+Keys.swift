@@ -8,6 +8,17 @@
 import Foundation
 
 extension AWSLocationGeoPluginConfiguration {
+    enum Node {
+        case region
+        case items
+        case `default`
+        case style
+
+        var key: String {
+            String(describing: self)
+        }
+    }
+
     enum Section {
         case plugin
         case maps

@@ -20,42 +20,48 @@ class AWSLocationGeoPluginConfigureTests: AWSLocationGeoPluginTestBase {
     // MARK: - Configuration tests
 
     func testConfigureSuccess() {
-        let region = JSONValue(stringLiteral: testRegion)
-        let map = JSONValue(stringLiteral: testMap)
-        let style = JSONValue(stringLiteral: testStyle)
-        let searchIndex = JSONValue(stringLiteral: testSearchIndex)
-//
-//        let pinpointAnalyticsPluginConfiguration = JSONValue(
-//            dictionaryLiteral:
-//            (AWSPinpointAnalyticsPluginConfiguration.appIdConfigKey, appId),
-//            (AWSPinpointAnalyticsPluginConfiguration.regionConfigKey, region)
-//        )
-//
-//        let regionConfiguration = JSONValue(dictionaryLiteral:
-//            (AWSPinpointAnalyticsPluginConfiguration.regionConfigKey, region))
-//
-//        let analyticsPluginConfig = JSONValue(
-//            dictionaryLiteral:
-//            (AWSPinpointAnalyticsPluginConfiguration.pinpointAnalyticsConfigKey, pinpointAnalyticsPluginConfiguration),
-//            (AWSPinpointAnalyticsPluginConfiguration.pinpointTargetingConfigKey, regionConfiguration),
-//            (AWSPinpointAnalyticsPluginConfiguration.autoFlushEventsIntervalKey, autoFlushInterval),
-//            (AWSPinpointAnalyticsPluginConfiguration.trackAppSessionsKey, trackAppSession),
-//            (AWSPinpointAnalyticsPluginConfiguration.autoSessionTrackingIntervalKey, autoSessionTrackingInterval)
-//        )
-//
-//        do {
-//            let analyticsPlugin = AWSPinpointAnalyticsPlugin()
-//            try analyticsPlugin.configure(using: analyticsPluginConfig)
-//
-//            XCTAssertNotNil(analyticsPlugin.pinpoint)
-//            XCTAssertNotNil(analyticsPlugin.authService)
-//            XCTAssertNotNil(analyticsPlugin.autoFlushEventsTimer)
-//            XCTAssertNotNil(analyticsPlugin.appSessionTracker)
-//            XCTAssertNotNil(analyticsPlugin.globalProperties)
-//            XCTAssertNotNil(analyticsPlugin.isEnabled)
-//        } catch {
-//            XCTFail("Failed to configure analytics plugin")
-//        }
+        // MARK: - Maps Config
+        let mapStyleJSON = JSONValue(stringLiteral: testStyle)
+        let testMapJSON = JSONValue(stringLiteral: testMap)
+
+        let mapStyleConfig = JSONValue(
+            dictionaryLiteral: (AWSLocationGeoPluginConfiguration.Node.style.key, mapStyleJSON))
+
+        let mapItemConfig = JSONValue(
+            dictionaryLiteral: (testMap, mapStyleConfig))
+
+        let mapsConfig = JSONValue(
+            dictionaryLiteral: (AWSLocationGeoPluginConfiguration.Node.items.key, mapItemConfig),
+                               (AWSLocationGeoPluginConfiguration.Node.default.key, testMapJSON))
+
+        // MARK: - Search Config
+        let searchIndexJSON = JSONValue(stringLiteral: testSearchIndex)
+        let searchItemsArrayJSON = JSONValue(arrayLiteral: searchIndexJSON)
+
+        let searchConfig = JSONValue(
+            dictionaryLiteral: (AWSLocationGeoPluginConfiguration.Node.items.key, searchItemsArrayJSON),
+                               (AWSLocationGeoPluginConfiguration.Node.default.key, searchIndexJSON))
+
+        // MARK: - Plugin Config
+
+        let regionJSON = JSONValue(stringLiteral: testRegion)
+
+        let geoPluginConfig = JSONValue(
+            dictionaryLiteral: (AWSLocationGeoPluginConfiguration.Node.region.key, regionJSON),
+                               (AWSLocationGeoPluginConfiguration.Section.maps.key, mapsConfig),
+                               (AWSLocationGeoPluginConfiguration.Section.searchIndices.key, searchConfig))
+
+        geoPlugin.reset {}
+
+        do {
+            try geoPlugin.configure(using: geoPluginConfig)
+
+            XCTAssertNotNil(geoPlugin.locationService)
+            XCTAssertNotNil(geoPlugin.authService)
+            XCTAssertNotNil(geoPlugin.pluginConfig)
+        } catch {
+            XCTFail("Failed to configure geo plugin with error: \(error)")
+        }
     }
 
     func testConfigureFailureForNilConfiguration() throws {
