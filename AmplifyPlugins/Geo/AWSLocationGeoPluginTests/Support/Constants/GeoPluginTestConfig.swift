@@ -11,14 +11,19 @@ import Amplify
 
 struct GeoPluginTestConfig {
     // Plugin Test Configuration
-    static let region = "us-east-2"
+    static let regionName = "us-east-2"
+    static let region = regionName.aws_regionTypeValue()
 
     // Map Test Configuration
     static let map = "testMap"
     static let style = "VectorEsriStreets"
+    static let url = URL(string: "https://maps.geo.\(regionName).amazonaws.com/maps/v0/maps/\(map)/style-descriptor")!
+    static let mapStyle = Geo.MapStyle(mapName: map, style: style, styleURL: url)
+    static let maps = [map: mapStyle]
 
     // Search Test Configuration
     static let searchIndex = "testSearchIndex"
+    static let searchIndices = [searchIndex]
 
     // MARK: - Maps Config JSON
     static let mapStyleJSON = JSONValue(stringLiteral: style)
@@ -44,7 +49,7 @@ struct GeoPluginTestConfig {
 
     // MARK: - Plugin Config JSON
 
-    static let regionJSON = JSONValue(stringLiteral: region)
+    static let regionJSON = JSONValue(stringLiteral: regionName)
 
     static let geoPluginConfigJSON = JSONValue(
         dictionaryLiteral: (AWSLocationGeoPluginConfiguration.Node.region.key, regionJSON),
