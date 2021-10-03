@@ -29,30 +29,29 @@ struct GeoPluginTestConfig {
     static let mapStyleJSON = JSONValue(stringLiteral: style)
     static let testMapJSON = JSONValue(stringLiteral: map)
 
-    static let mapStyleConfigJSON = JSONValue(
-        dictionaryLiteral: (AWSLocationGeoPluginConfiguration.Node.style.key, mapStyleJSON))
+    static let mapStyleConfigJSON = JSONValue(dictionaryLiteral:
+        (AWSLocationGeoPluginConfiguration.Node.style.key, mapStyleJSON))
 
-    static let mapItemConfigJSON = JSONValue(
-        dictionaryLiteral: (map, mapStyleConfigJSON))
+    static let mapItemConfigJSON = JSONValue(dictionaryLiteral: (map, mapStyleConfigJSON))
 
-    static let mapsConfigJSON = JSONValue(
-        dictionaryLiteral: (AWSLocationGeoPluginConfiguration.Node.items.key, mapItemConfigJSON),
-                           (AWSLocationGeoPluginConfiguration.Node.default.key, testMapJSON))
+    static let mapsConfigJSON = JSONValue(dictionaryLiteral:
+        (AWSLocationGeoPluginConfiguration.Node.items.key, mapItemConfigJSON),
+        (AWSLocationGeoPluginConfiguration.Node.default.key, testMapJSON))
 
     // MARK: - Search Config JSON
     static let searchIndexJSON = JSONValue(stringLiteral: searchIndex)
     static let searchItemsArrayJSON = JSONValue(arrayLiteral: searchIndexJSON)
 
-    static let searchConfigJSON = JSONValue(
-        dictionaryLiteral: (AWSLocationGeoPluginConfiguration.Node.items.key, searchItemsArrayJSON),
-                           (AWSLocationGeoPluginConfiguration.Node.default.key, searchIndexJSON))
+    static let searchConfigJSON = JSONValue(dictionaryLiteral:
+        (AWSLocationGeoPluginConfiguration.Node.items.key, searchItemsArrayJSON),
+        (AWSLocationGeoPluginConfiguration.Node.default.key, searchIndexJSON))
 
     // MARK: - Plugin Config JSON
 
     static let regionJSON = JSONValue(stringLiteral: regionName)
 
-    static let geoPluginConfigJSON = JSONValue(
-        dictionaryLiteral: (AWSLocationGeoPluginConfiguration.Node.region.key, regionJSON),
-                           (AWSLocationGeoPluginConfiguration.Section.maps.key, mapsConfigJSON),
-                           (AWSLocationGeoPluginConfiguration.Section.searchIndices.key, searchConfigJSON))
+    static let geoPluginConfigJSON = JSONValue(dictionaryLiteral:
+        (AWSLocationGeoPluginConfiguration.Node.region.key, regionJSON),
+        (AWSLocationGeoPluginConfiguration.Section.maps.key, mapsConfigJSON),
+        (AWSLocationGeoPluginConfiguration.Section.searchIndices.key, searchConfigJSON))
 }

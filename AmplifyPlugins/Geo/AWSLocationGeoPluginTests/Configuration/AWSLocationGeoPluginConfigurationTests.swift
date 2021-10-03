@@ -104,9 +104,12 @@ class AWSLocationGeoPluginConfigurationTests: XCTestCase {
                            GeoPluginConfigError.configurationInvalid(section: .plugin).errorDescription)
         }
     }
-    
+
     func testConfigureThrowsErrorForInvalidMapsConfiguration() {
-        let geoPluginConfig = JSONValue(stringLiteral: "notADictionaryLiteral")
+        let mapsConfigJSON = JSONValue(stringLiteral: "notADictionaryLiteral")
+        let geoPluginConfig = JSONValue(dictionaryLiteral:
+            (AWSLocationGeoPluginConfiguration.Node.region.key, GeoPluginTestConfig.regionJSON),
+            (AWSLocationGeoPluginConfiguration.Section.maps.key, mapsConfigJSON))
 
         XCTAssertThrowsError(try AWSLocationGeoPluginConfiguration(config: geoPluginConfig)) { error in
             guard case let PluginError.pluginConfigurationError(errorDescription, _, _) = error else {
@@ -114,292 +117,67 @@ class AWSLocationGeoPluginConfigurationTests: XCTestCase {
                 return
             }
             XCTAssertEqual(errorDescription,
-                           GeoPluginConfigError.configurationInvalid(section: .plugin).errorDescription)
+                           GeoPluginConfigError.configurationInvalid(section: .maps).errorDescription)
         }
     }
-//
-//    func testConfigureThrowsErrorForInvalidConfigurationObject() {
-//        let geoPluginConfig = JSONValue(stringLiteral: "notADictionaryLiteral")
-//
-//        XCTAssertThrowsError(try AWSLocationGeoPluginConfiguration(config: geoPluginConfig)) { error in
-//            guard case let PluginError.pluginConfigurationError(errorDescription, _, _) = error else {
-//                XCTFail("Expected PluginError pluginConfigurationError, got: \(error)")
-//                return
-//            }
-//            XCTAssertEqual(errorDescription,
-//                           GeoPluginConfigError.configurationInvalid(section: .plugin).errorDescription)
-//        }
-//    }
-//
-//    func testConfigureThrowsErrorForInvalidConfigurationObject() {
-//        let geoPluginConfig = JSONValue(stringLiteral: "notADictionaryLiteral")
-//
-//        XCTAssertThrowsError(try AWSLocationGeoPluginConfiguration(config: geoPluginConfig)) { error in
-//            guard case let PluginError.pluginConfigurationError(errorDescription, _, _) = error else {
-//                XCTFail("Expected PluginError pluginConfigurationError, got: \(error)")
-//                return
-//            }
-//            XCTAssertEqual(errorDescription,
-//                           GeoPluginConfigError.configurationInvalid(section: .plugin).errorDescription)
-//        }
-//    }
-//
-//    func testConfigureThrowsErrorForMissingPinpointAnalyticsConfiguration() {
-//        let analyticsPluginConfig = JSONValue(
-//            dictionaryLiteral:
-//            (AWSPinpointAnalyticsPluginConfiguration.pinpointTargetingConfigKey, regionConfiguration))
-//
-//        XCTAssertThrowsError(try AWSPinpointAnalyticsPluginConfiguration(analyticsPluginConfig)) { error in
-//            guard case let PluginError.pluginConfigurationError(errorDescription, _, _) = error else {
-//                XCTFail("Expected PluginError pluginConfigurationError, got: \(error)")
-//                return
-//            }
-//            XCTAssertEqual(errorDescription,
-//                           AnalyticsPluginErrorConstant.missingPinpointAnalyicsConfiguration.errorDescription)
-//        }
-//    }
-//
-//    func testConfigureThrowsErrorForMissingPinpointAnalyticsConfigurationObject() {
-//        let pinpointAnalyticsPluginConfiguration = JSONValue(stringLiteral: "notDictionary")
-//        let analyticsPluginConfig = JSONValue(
-//            dictionaryLiteral:
-//            (AWSPinpointAnalyticsPluginConfiguration.pinpointAnalyticsConfigKey, pinpointAnalyticsPluginConfiguration),
-//            (AWSPinpointAnalyticsPluginConfiguration.pinpointTargetingConfigKey, regionConfiguration)
-//        )
-//
-//        XCTAssertThrowsError(try AWSPinpointAnalyticsPluginConfiguration(analyticsPluginConfig)) { error in
-//            guard case let PluginError.pluginConfigurationError(errorDescription, _, _) = error else {
-//                XCTFail("Expected PluginError pluginConfigurationError, got: \(error)")
-//                return
-//            }
-//            XCTAssertEqual(errorDescription,
-//                           AnalyticsPluginErrorConstant.pinpointAnalyticsConfigurationExpected.errorDescription)
-//        }
-//    }
-//
-//    func testConfigureThrowsErrorForMissingPinpointAnalyticsAppId() {
-//        let pinpointAnalyticsPluginConfiguration = JSONValue(
-//            dictionaryLiteral:
-//            (AWSPinpointAnalyticsPluginConfiguration.regionConfigKey, region))
-//        let analyticsPluginConfig = JSONValue(
-//            dictionaryLiteral:
-//            (AWSPinpointAnalyticsPluginConfiguration.pinpointAnalyticsConfigKey, pinpointAnalyticsPluginConfiguration),
-//            (AWSPinpointAnalyticsPluginConfiguration.pinpointTargetingConfigKey, regionConfiguration)
-//        )
-//
-//        XCTAssertThrowsError(try AWSPinpointAnalyticsPluginConfiguration(analyticsPluginConfig)) { error in
-//            guard case let PluginError.pluginConfigurationError(errorDescription, _, _) = error else {
-//                XCTFail("Expected PluginError pluginConfigurationError, got: \(error)")
-//                return
-//            }
-//            XCTAssertEqual(errorDescription, AnalyticsPluginErrorConstant.missingAppId.errorDescription)
-//        }
-//    }
-//
-//    func testConfigureThrowsErrorForEmptyPinpointAnalyticsAppIdValue() {
-//        let pinpointAnalyticsPluginConfiguration = JSONValue(
-//            dictionaryLiteral:
-//            (AWSPinpointAnalyticsPluginConfiguration.appIdConfigKey, ""),
-//            (AWSPinpointAnalyticsPluginConfiguration.regionConfigKey, region)
-//        )
-//        let analyticsPluginConfig = JSONValue(
-//            dictionaryLiteral:
-//            (AWSPinpointAnalyticsPluginConfiguration.pinpointAnalyticsConfigKey, pinpointAnalyticsPluginConfiguration),
-//            (AWSPinpointAnalyticsPluginConfiguration.pinpointTargetingConfigKey, regionConfiguration)
-//        )
-//
-//        XCTAssertThrowsError(try AWSPinpointAnalyticsPluginConfiguration(analyticsPluginConfig)) { error in
-//            guard case let PluginError.pluginConfigurationError(errorDescription, _, _) = error else {
-//                XCTFail("Expected PluginError pluginConfigurationError, got: \(error)")
-//                return
-//            }
-//            XCTAssertEqual(errorDescription, AnalyticsPluginErrorConstant.emptyAppId.errorDescription)
-//        }
-//    }
-//
-//    func testConfigureThrowsErrorForInvalidPinpointAnalyticsAppIdValue() {
-//        let pinpointAnalyticsPluginConfiguration = JSONValue(
-//            dictionaryLiteral:
-//            (AWSPinpointAnalyticsPluginConfiguration.appIdConfigKey, 1),
-//            (AWSPinpointAnalyticsPluginConfiguration.regionConfigKey, region)
-//        )
-//        let analyticsPluginConfig = JSONValue(
-//            dictionaryLiteral:
-//            (AWSPinpointAnalyticsPluginConfiguration.pinpointAnalyticsConfigKey, pinpointAnalyticsPluginConfiguration),
-//            (AWSPinpointAnalyticsPluginConfiguration.pinpointTargetingConfigKey, regionConfiguration)
-//        )
-//
-//        XCTAssertThrowsError(try AWSPinpointAnalyticsPluginConfiguration(analyticsPluginConfig)) { error in
-//            guard case let PluginError.pluginConfigurationError(errorDescription, _, _) = error else {
-//                XCTFail("Expected PluginError pluginConfigurationError, got: \(error)")
-//                return
-//            }
-//            XCTAssertEqual(errorDescription, AnalyticsPluginErrorConstant.invalidAppId.errorDescription)
-//        }
-//    }
-//
-//    func testConfigureThrowsErrorForMissingPinpointAnalyticsRegion() {
-//        let pinpointAnalyticsPluginConfiguration = JSONValue(
-//            dictionaryLiteral:
-//            (AWSPinpointAnalyticsPluginConfiguration.appIdConfigKey, appId))
-//        let analyticsPluginConfig = JSONValue(
-//            dictionaryLiteral:
-//            (AWSPinpointAnalyticsPluginConfiguration.pinpointAnalyticsConfigKey, pinpointAnalyticsPluginConfiguration),
-//            (AWSPinpointAnalyticsPluginConfiguration.pinpointTargetingConfigKey, regionConfiguration)
-//        )
-//
-//        XCTAssertThrowsError(try AWSPinpointAnalyticsPluginConfiguration(analyticsPluginConfig)) { error in
-//            guard case let PluginError.pluginConfigurationError(errorDescription, _, _) = error else {
-//                XCTFail("Expected PluginError pluginConfigurationError, got: \(error)")
-//                return
-//            }
-//            XCTAssertEqual(errorDescription, AnalyticsPluginErrorConstant.missingRegion.errorDescription)
-//        }
-//    }
-//
-//    func testConfigureThrowsErrorForEmptyPinpointAnalyticsRegionValue() {
-//        let pinpointAnalyticsPluginConfiguration = JSONValue(
-//            dictionaryLiteral:
-//            (AWSPinpointAnalyticsPluginConfiguration.appIdConfigKey, appId),
-//            (AWSPinpointAnalyticsPluginConfiguration.regionConfigKey, "")
-//        )
-//        let analyticsPluginConfig = JSONValue(
-//            dictionaryLiteral:
-//            (AWSPinpointAnalyticsPluginConfiguration.pinpointAnalyticsConfigKey, pinpointAnalyticsPluginConfiguration),
-//            (AWSPinpointAnalyticsPluginConfiguration.pinpointTargetingConfigKey, regionConfiguration)
-//        )
-//
-//        XCTAssertThrowsError(try AWSPinpointAnalyticsPluginConfiguration(analyticsPluginConfig)) { error in
-//            guard case let PluginError.pluginConfigurationError(errorDescription, _, _) = error else {
-//                XCTFail("Expected PluginError pluginConfigurationError, got: \(error)")
-//                return
-//            }
-//            XCTAssertEqual(errorDescription, AnalyticsPluginErrorConstant.emptyRegion.errorDescription)
-//        }
-//    }
-//
-//    func testConfigureThrowsErrorForInvalidPinpointAnalyticsRegionValue() {
-//        let pinpointAnalyticsPluginConfiguration = JSONValue(
-//            dictionaryLiteral:
-//            (AWSPinpointAnalyticsPluginConfiguration.appIdConfigKey, appId),
-//            (AWSPinpointAnalyticsPluginConfiguration.regionConfigKey, "invalidRegion")
-//        )
-//        let analyticsPluginConfig = JSONValue(
-//            dictionaryLiteral:
-//            (AWSPinpointAnalyticsPluginConfiguration.pinpointAnalyticsConfigKey, pinpointAnalyticsPluginConfiguration),
-//            (AWSPinpointAnalyticsPluginConfiguration.pinpointTargetingConfigKey, regionConfiguration)
-//        )
-//
-//        XCTAssertThrowsError(try AWSPinpointAnalyticsPluginConfiguration(analyticsPluginConfig)) { error in
-//            guard case let PluginError.pluginConfigurationError(errorDescription, _, _) = error else {
-//                XCTFail("Expected PluginError pluginConfigurationError, got: \(error)")
-//                return
-//            }
-//            XCTAssertEqual(errorDescription, AnalyticsPluginErrorConstant.invalidRegion.errorDescription)
-//        }
-//    }
-//
-//    func testConfigureThrowsErrorForMissingPinpointTargetingConfiguration() {
-//        let analyticsPluginConfig = JSONValue(
-//            dictionaryLiteral:
-//            (AWSPinpointAnalyticsPluginConfiguration.pinpointAnalyticsConfigKey, pinpointAnalyticsPluginConfiguration))
-//
-//        XCTAssertThrowsError(try AWSPinpointAnalyticsPluginConfiguration(analyticsPluginConfig)) { error in
-//            guard case let PluginError.pluginConfigurationError(errorDescription, _, _) = error else {
-//                XCTFail("Expected PluginError pluginConfigurationError, got: \(error)")
-//                return
-//            }
-//            XCTAssertEqual(errorDescription,
-//                           AnalyticsPluginErrorConstant.missingPinpointTargetingConfiguration.errorDescription)
-//        }
-//    }
-//
-//    func testConfigureThrowsErrorForMissingPinpointTargetingConfigurationObject() {
-//        let regionConfiguration = JSONValue(stringLiteral: "notDictionary")
-//        let analyticsPluginConfig = JSONValue(
-//            dictionaryLiteral:
-//            (AWSPinpointAnalyticsPluginConfiguration.pinpointAnalyticsConfigKey, pinpointAnalyticsPluginConfiguration),
-//            (AWSPinpointAnalyticsPluginConfiguration.pinpointTargetingConfigKey, regionConfiguration)
-//        )
-//
-//        XCTAssertThrowsError(try AWSPinpointAnalyticsPluginConfiguration(analyticsPluginConfig)) { error in
-//            guard case let PluginError.pluginConfigurationError(errorDescription, _, _) = error else {
-//                XCTFail("Expected PluginError pluginConfigurationError, got: \(error)")
-//                return
-//            }
-//            XCTAssertEqual(errorDescription,
-//                           AnalyticsPluginErrorConstant.pinpointTargetingConfigurationExpected.errorDescription)
-//        }
-//    }
-//
-//    func testConfigureThrowsErrorForMissingPinpointTargetingRegion() {
-//        let regionConfiguration = JSONValue(dictionaryLiteral:
-//            ("MissingRegionKey", region))
-//        let analyticsPluginConfig = JSONValue(
-//            dictionaryLiteral:
-//            (AWSPinpointAnalyticsPluginConfiguration.pinpointAnalyticsConfigKey, pinpointAnalyticsPluginConfiguration),
-//            (AWSPinpointAnalyticsPluginConfiguration.pinpointTargetingConfigKey, regionConfiguration)
-//        )
-//
-//        XCTAssertThrowsError(try AWSPinpointAnalyticsPluginConfiguration(analyticsPluginConfig)) { error in
-//            guard case let PluginError.pluginConfigurationError(errorDescription, _, _) = error else {
-//                XCTFail("Expected PluginError pluginConfigurationError, got: \(error)")
-//                return
-//            }
-//            XCTAssertEqual(errorDescription, AnalyticsPluginErrorConstant.missingRegion.errorDescription)
-//        }
-//    }
-//
-//    func testConfigureThrowsErrorForEmptyPinpointTargetingRegionValue() {
-//        let regionConfiguration = JSONValue(dictionaryLiteral:
-//            (AWSPinpointAnalyticsPluginConfiguration.regionConfigKey, ""))
-//        let analyticsPluginConfig = JSONValue(
-//            dictionaryLiteral:
-//            (AWSPinpointAnalyticsPluginConfiguration.pinpointAnalyticsConfigKey, pinpointAnalyticsPluginConfiguration),
-//            (AWSPinpointAnalyticsPluginConfiguration.pinpointTargetingConfigKey, regionConfiguration)
-//        )
-//
-//        XCTAssertThrowsError(try AWSPinpointAnalyticsPluginConfiguration(analyticsPluginConfig)) { error in
-//            guard case let PluginError.pluginConfigurationError(errorDescription, _, _) = error else {
-//                XCTFail("Expected PluginError pluginConfigurationError, got: \(error)")
-//                return
-//            }
-//            XCTAssertEqual(errorDescription, AnalyticsPluginErrorConstant.emptyRegion.errorDescription)
-//        }
-//    }
-//
-//    func testConfigureThrowsErrorForInvalidPinpointTargetingRegionValue() {
-//        let regionConfiguration = JSONValue(dictionaryLiteral:
-//            (AWSPinpointAnalyticsPluginConfiguration.regionConfigKey, "invalidRegion"))
-//        let analyticsPluginConfig = JSONValue(
-//            dictionaryLiteral:
-//            (AWSPinpointAnalyticsPluginConfiguration.pinpointAnalyticsConfigKey, pinpointAnalyticsPluginConfiguration),
-//            (AWSPinpointAnalyticsPluginConfiguration.pinpointTargetingConfigKey, regionConfiguration)
-//        )
-//
-//        XCTAssertThrowsError(try AWSPinpointAnalyticsPluginConfiguration(analyticsPluginConfig)) { error in
-//            guard case let PluginError.pluginConfigurationError(errorDescription, _, _) = error else {
-//                XCTFail("Expected PluginError pluginConfigurationError, got: \(error)")
-//                return
-//            }
-//            XCTAssertEqual(errorDescription, AnalyticsPluginErrorConstant.invalidRegion.errorDescription)
-//        }
-//    }
-//
-//    func testThrowsOnMissingConfig() throws {
-//        let plugin = AWSPinpointAnalyticsPlugin()
-//        try Amplify.add(plugin: plugin)
-//
-//        let categoryConfig = AnalyticsCategoryConfiguration(plugins: ["NonExistentPlugin": true])
-//        let amplifyConfig = AmplifyConfiguration(analytics: categoryConfig)
-//        do {
-//            try Amplify.configure(amplifyConfig)
-//            XCTFail("Should have thrown a pluginConfigurationError if not supplied with a plugin-specific config.")
-//        } catch {
-//            guard case PluginError.pluginConfigurationError = error else {
-//                XCTFail("Should have thrown a pluginConfigurationError if not supplied with a plugin-specific config.")
-//                return
-//            }
-//        }
-//    }
+
+    func testConfigureThrowsErrorForInvalidSearchConfiguration() {
+        let searchConfigJSON = JSONValue(stringLiteral: "notADictionaryLiteral")
+        let geoPluginConfig = JSONValue(dictionaryLiteral:
+            (AWSLocationGeoPluginConfiguration.Node.region.key, GeoPluginTestConfig.regionJSON),
+            (AWSLocationGeoPluginConfiguration.Section.searchIndices.key, searchConfigJSON))
+
+        XCTAssertThrowsError(try AWSLocationGeoPluginConfiguration(config: geoPluginConfig)) { error in
+            guard case let PluginError.pluginConfigurationError(errorDescription, _, _) = error else {
+                XCTFail("Expected PluginError pluginConfigurationError, got: \(error)")
+                return
+            }
+            XCTAssertEqual(errorDescription,
+                           GeoPluginConfigError.configurationInvalid(section: .searchIndices).errorDescription)
+        }
+    }
+
+    func testConfigureThrowsErrorForDefaultMapNotFound() {
+        let map = "missingMapName"
+        let mapJSON = JSONValue(stringLiteral: map)
+
+        let mapsConfigJSON = JSONValue(dictionaryLiteral:
+            (AWSLocationGeoPluginConfiguration.Node.items.key, GeoPluginTestConfig.mapItemConfigJSON),
+            (AWSLocationGeoPluginConfiguration.Node.default.key, mapJSON))
+
+        let geoPluginConfig = JSONValue(dictionaryLiteral:
+            (AWSLocationGeoPluginConfiguration.Node.region.key, GeoPluginTestConfig.regionJSON),
+            (AWSLocationGeoPluginConfiguration.Section.maps.key, mapsConfigJSON))
+
+        XCTAssertThrowsError(try AWSLocationGeoPluginConfiguration(config: geoPluginConfig)) { error in
+            guard case let PluginError.pluginConfigurationError(errorDescription, _, _) = error else {
+                XCTFail("Expected PluginError pluginConfigurationError, got: \(error)")
+                return
+            }
+            XCTAssertEqual(errorDescription,
+                           GeoPluginConfigError.mapDefaultNotFound(mapName: map).errorDescription)
+        }
+    }
+
+    func testConfigureThrowsErrorForDefaultSearchIndexNotFound() {
+        let searchIndex = "missingSearchIndex"
+        let searchIndexJSON = JSONValue(stringLiteral: searchIndex)
+
+        let searchConfigJSON = JSONValue(dictionaryLiteral:
+            (AWSLocationGeoPluginConfiguration.Node.items.key, GeoPluginTestConfig.searchItemsArrayJSON),
+            (AWSLocationGeoPluginConfiguration.Node.default.key, searchIndexJSON))
+
+        let geoPluginConfig = JSONValue(dictionaryLiteral:
+            (AWSLocationGeoPluginConfiguration.Node.region.key, GeoPluginTestConfig.regionJSON),
+            (AWSLocationGeoPluginConfiguration.Section.searchIndices.key, searchConfigJSON))
+
+        XCTAssertThrowsError(try AWSLocationGeoPluginConfiguration(config: geoPluginConfig)) { error in
+            guard case let PluginError.pluginConfigurationError(errorDescription, _, _) = error else {
+                XCTFail("Expected PluginError pluginConfigurationError, got: \(error)")
+                return
+            }
+            XCTAssertEqual(errorDescription,
+                           GeoPluginConfigError.searchDefaultNotFound(indexName: searchIndex).errorDescription)
+        }
+    }
 }
