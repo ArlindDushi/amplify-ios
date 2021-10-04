@@ -10,6 +10,8 @@ import Amplify
 @testable import AWSLocationGeoPlugin
 
 struct GeoPluginTestConfig {
+    static let timeout = 1.0
+
     // Plugin Test Configuration
     static let regionName = "us-east-2"
     static let region = regionName.aws_regionTypeValue()

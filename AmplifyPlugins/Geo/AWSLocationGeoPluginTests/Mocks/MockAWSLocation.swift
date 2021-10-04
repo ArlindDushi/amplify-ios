@@ -37,11 +37,32 @@ extension MockAWSLocation {
 
     public func verifySearchPlaceIndexForText(_ request: AWSLocationSearchPlaceIndexForTextRequest) {
         XCTAssertEqual(searchPlaceIndexForTextCalled, 1)
-        XCTAssertEqual(searchPlaceIndexForTextRequest, request)
+        guard let receivedRequest = searchPlaceIndexForTextRequest else {
+            XCTFail("Did not receive request.")
+            return
+        }
+        XCTAssertNotNil(receivedRequest.indexName)
+        if let indexName = request.indexName {
+            XCTAssertEqual(receivedRequest.indexName, indexName)
+        }
+        XCTAssertEqual(receivedRequest.text, request.text)
+        XCTAssertEqual(receivedRequest.biasPosition, request.biasPosition)
+        XCTAssertEqual(receivedRequest.filterBBox, request.filterBBox)
+        XCTAssertEqual(receivedRequest.filterCountries, request.filterCountries)
+        XCTAssertEqual(receivedRequest.maxResults, request.maxResults)
     }
 
     public func verifySearchPlaceIndexForPosition(_ request: AWSLocationSearchPlaceIndexForPositionRequest) {
         XCTAssertEqual(searchPlaceIndexForPositionCalled, 1)
-        XCTAssertEqual(searchPlaceIndexForPositionRequest, request)
+        guard let receivedRequest = searchPlaceIndexForPositionRequest else {
+            XCTFail("Did not receive request.")
+            return
+        }
+        XCTAssertNotNil(receivedRequest.indexName)
+        if let indexName = request.indexName {
+            XCTAssertEqual(receivedRequest.indexName, indexName)
+        }
+        XCTAssertEqual(receivedRequest.position, request.position)
+        XCTAssertEqual(receivedRequest.maxResults, request.maxResults)
     }
 }

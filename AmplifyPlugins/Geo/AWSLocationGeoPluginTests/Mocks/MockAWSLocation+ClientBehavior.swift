@@ -12,8 +12,8 @@ import Foundation
 extension MockAWSLocation {
 
     public func searchPlaceIndex(forText: AWSLocationSearchPlaceIndexForTextRequest,
-                          completionHandler: ((AWSLocationSearchPlaceIndexForTextResponse?,
-                                               Error?) -> Void)?) {
+                                 completionHandler: ((AWSLocationSearchPlaceIndexForTextResponse?,
+                                                      Error?) -> Void)?) {
         searchPlaceIndexForTextCalled += 1
         searchPlaceIndexForTextRequest = forText
         if let completionHandler = completionHandler {
@@ -22,8 +22,8 @@ extension MockAWSLocation {
     }
 
     public func searchPlaceIndex(forPosition: AWSLocationSearchPlaceIndexForPositionRequest,
-                          completionHandler: ((AWSLocationSearchPlaceIndexForPositionResponse?,
-                                               Error?) -> Void)?) {
+                                 completionHandler: ((AWSLocationSearchPlaceIndexForPositionResponse?,
+                                                      Error?) -> Void)?) {
         searchPlaceIndexForPositionCalled += 1
         searchPlaceIndexForPositionRequest = forPosition
         if let completionHandler = completionHandler {

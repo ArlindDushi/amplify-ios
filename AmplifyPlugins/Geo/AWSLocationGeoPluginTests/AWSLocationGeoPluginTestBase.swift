@@ -12,6 +12,7 @@ import XCTest
 
 class AWSLocationGeoPluginTestBase: XCTestCase {
     var geoPlugin: AWSLocationGeoPlugin!
+    var mockLocation = MockAWSLocation()
     var pluginConfig: AWSLocationGeoPluginConfiguration!
     var emptyPluginConfig: AWSLocationGeoPluginConfiguration!
 
@@ -31,7 +32,7 @@ class AWSLocationGeoPluginTestBase: XCTestCase {
                                                               searchIndices: [])
 
         geoPlugin = AWSLocationGeoPlugin()
-        geoPlugin.locationService = MockAWSLocation()
+        geoPlugin.locationService = mockLocation
         geoPlugin.authService = MockAWSAuthService()
         geoPlugin.pluginConfig = pluginConfig
 
