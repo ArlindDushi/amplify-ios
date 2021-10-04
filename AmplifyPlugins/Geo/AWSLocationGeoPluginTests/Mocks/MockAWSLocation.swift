@@ -45,4 +45,3 @@ extension MockAWSLocation {
         XCTAssertEqual(searchPlaceIndexForPositionRequest, request)
     }
 }
-

@@ -27,11 +27,11 @@ extension AWSLocationGeoPlugin {
     ///   - placeIndexName: The name of the Place Index to query. (optional)
     ///   - completionHandler: The completion handler receives a Response object.  The
     ///   success case provides a Place array.
-    public func search(for text: String, // swiftlint:disable:this function_parameter_count
-                       area: Geo.SearchArea?,
-                       countries: [Geo.Country]?,
-                       maxResults: Int?,
-                       placeIndexName: String?,
+    public func search(for text: String,
+                       area: Geo.SearchArea? = nil,
+                       countries: [Geo.Country]? = nil,
+                       maxResults: Int? = nil,
+                       placeIndexName: String? = nil,
                        completionHandler: @escaping Geo.ResultsHandler<[Geo.Place]>) {
 
         assert(pluginConfig.defaultSearchIndex != nil, GeoPluginConfigError.searchConfigMissing)
@@ -77,8 +77,8 @@ extension AWSLocationGeoPlugin {
     ///   - completionHandler: The completion handler receives a Response object.  The
     ///   success case provides a Place array.
     public func search(for coordinates: Geo.Coordinates,
-                       maxResults: Int?,
-                       placeIndexName: String?,
+                       maxResults: Int? = nil,
+                       placeIndexName: String? = nil,
                        completionHandler: @escaping Geo.ResultsHandler<[Geo.Place]>) {
 
         assert(pluginConfig.defaultSearchIndex != nil, GeoPluginConfigError.searchConfigMissing)
