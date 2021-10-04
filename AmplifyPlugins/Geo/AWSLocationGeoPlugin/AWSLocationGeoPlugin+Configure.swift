@@ -6,9 +6,14 @@
 //
 
 import Amplify
-import AWSLocation
 import AWSPluginsCore
 import Foundation
+
+#if COCOAPODS
+import AWSLocation
+#else
+import AWSLocationXCF
+#endif
 
 extension AWSLocationGeoPlugin {
     /// Configures AWSLocationPlugin with the specified configuration.

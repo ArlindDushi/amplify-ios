@@ -6,7 +6,12 @@
 //
 
 import Foundation
+
+#if COCOAPODS
 import AWSLocation
+#else
+import AWSLocationXCF
+#endif
 
 /// Behavior that `AWSLocationAdapter` will use.
 /// This protocol allows a way to create a Mock and ensure the plugin implementation is testable.

@@ -7,8 +7,13 @@
 
 import Amplify
 import AWSPluginsCore
-import AWSLocation
 import Foundation
+
+#if COCOAPODS
+import AWSLocation
+#else
+import AWSLocationXCF
+#endif
 
 /// The AWSLocationPlugin implements the Geo APIs for Amazon Location
 public final class AWSLocationGeoPlugin: GeoCategoryPlugin {

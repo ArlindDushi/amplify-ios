@@ -6,8 +6,13 @@
 //
 
 import Amplify
-import AWSLocation
 import Foundation
+
+#if COCOAPODS
+import AWSLocation
+#else
+import AWSLocationXCF
+#endif
 
 extension AWSLocationGeoPlugin {
 

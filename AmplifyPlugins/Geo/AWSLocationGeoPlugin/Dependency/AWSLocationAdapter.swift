@@ -7,9 +7,14 @@
 
 import Amplify
 import AWSCore
-import AWSLocation
 import AWSPluginsCore
 import Foundation
+
+#if COCOAPODS
+import AWSLocation
+#else
+import AWSLocationXCF
+#endif
 
 /// Conforms to AWSLocationBehavior which uses an instance of the AWSLocation to perform its methods.
 ///

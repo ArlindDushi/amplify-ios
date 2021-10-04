@@ -7,7 +7,11 @@
 
 import Amplify
 import Foundation
+#if COCOAPODS
 import AWSLocation
+#else
+import AWSLocationXCF
+#endif
 
 public struct AWSLocationGeoPluginConfiguration {
     let region: AWSRegionType
