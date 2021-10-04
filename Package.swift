@@ -102,7 +102,7 @@ let package = Package(
                 .target(name: "Amplify"),
                 .target(name: "AWSPluginsCore"),
                 .product(name: "AWSCore", package: "AWSiOSSDKV2"),
-                .product(name: "AWSLocation", package: "AWSiOSSDKV2")
+                .product(name: "AWSLocationXCF", package: "AWSiOSSDKV2")
             ],
             path: "AmplifyPlugins/Geo/AWSLocationGeoPlugin",
             exclude: [

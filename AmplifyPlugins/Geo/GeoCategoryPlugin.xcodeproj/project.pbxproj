@@ -170,16 +170,8 @@
 			isa = PBXGroup;
 			children = (
 				5CC7F8E72709F5B200EB2C0C /* Constants */,
-				2149E693238B2FE400873955 /* Utils */,
 			);
 			path = Support;
-			sourceTree = "<group>";
-		};
-		2149E693238B2FE400873955 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utils;
 			sourceTree = "<group>";
 		};
 		5CC7F8E72709F5B200EB2C0C /* Constants */ = {
@@ -278,7 +270,6 @@
 				B478F7262375014D00C4F92B /* Configuration */,
 				B478F72B2375014D00C4F92B /* Dependency */,
 				B478F7292375014D00C4F92B /* Resources */,
-				B478F7372375014D00C4F92B /* Support */,
 			);
 			path = AWSLocationGeoPlugin;
 			sourceTree = "<group>";
@@ -308,29 +299,6 @@
 				B478F72E2375014D00C4F92B /* AWSLocationBehavior.swift */,
 			);
 			path = Dependency;
-			sourceTree = "<group>";
-		};
-		B478F7372375014D00C4F92B /* Support */ = {
-			isa = PBXGroup;
-			children = (
-				B478F73D2375014D00C4F92B /* Extensions */,
-				B478F73B2375014D00C4F92B /* Utils */,
-			);
-			path = Support;
-			sourceTree = "<group>";
-		};
-		B478F73B2375014D00C4F92B /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
-		B478F73D2375014D00C4F92B /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		B478F759237503B700C4F92B /* AWSLocationGeoPluginTests */ = {
