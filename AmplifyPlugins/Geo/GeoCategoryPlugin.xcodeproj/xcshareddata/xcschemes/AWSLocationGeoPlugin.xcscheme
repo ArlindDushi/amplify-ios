@@ -48,11 +48,6 @@
                BlueprintName = "AWSLocationGeoPluginTests"
                ReferencedContainer = "container:GeoCategoryPlugin.xcodeproj">
             </BuildableReference>
-            <SkippedTests>
-               <Test
-                  Identifier = "AWSPinpointAnalyticsPluginConfigureTests/testConfigureSuccess()">
-               </Test>
-            </SkippedTests>
          </TestableReference>
       </Testables>
    </TestAction>
