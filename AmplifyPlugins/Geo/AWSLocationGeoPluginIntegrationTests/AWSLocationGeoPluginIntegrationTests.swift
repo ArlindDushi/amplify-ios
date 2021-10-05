@@ -12,96 +12,76 @@ import AWSLocation
 @testable import Amplify
 @testable import AWSLocationGeoPlugin
 @testable import AmplifyTestCommon
-//import AWSLocationGeoPlugin
 
-// swiftlint:disable:next type_name
 class AWSLocationGeoPluginIntergrationTests: XCTestCase {
-
-    static let amplifyConfiguration = "AWSPinpointAnalyticsPluginIntegrationTests-amplifyconfiguration"
-    static let analyticsPluginKey = "awsPinpointAnalyticsPlugin"
+    let timeout = 30.0
+    let searchText = "coffee shop"
+    let coordinates = Geo.Coordinates(latitude: 39.7392, longitude: -104.9903)
 
     override func setUp() {
+        continueAfterFailure = false
         do {
-            //let config = try TestConfigHelper.retrieveAmplifyConfiguration(
-//                forResource: AWSLocationGeoPluginIntergrationTests.amplifyConfiguration)
             try Amplify.add(plugin: AWSCognitoAuthPlugin())
             try Amplify.add(plugin: AWSLocationGeoPlugin())
-            try Amplify.configure() //(config)
+            try Amplify.configure()
         } catch {
             XCTFail("Failed to initialize and configure Amplify \(error)")
         }
+        XCTAssertNotNil(Amplify.Geo.plugin)
     }
 
     override func tearDown() {
         Amplify.reset()
     }
 
-//    func testIdentifyUser() {
-//        let userId = "userId"
-//        let identifyUserEvent = expectation(description: "Identify User event was received on the hub plugin")
-//        _ = Amplify.Hub.listen(to: .analytics, isIncluded: nil) { payload in
-//            print(payload)
-//            if payload.eventName == HubPayload.EventName.Analytics.identifyUser {
-//                guard let data = payload.data as? (String, AnalyticsUserProfile?) else {
-//                    XCTFail("Missing data")
-//                    return
-//                }
-//
-//                XCTAssertNotNil(data)
-//                XCTAssertEqual(data.0, userId)
-//                identifyUserEvent.fulfill()
-//            }
-//        }
-//
-//        let location = AnalyticsUserProfile.Location(latitude: 47.606209,
-//                                                     longitude: -122.332069,
-//                                                     postalCode: "98122",
-//                                                     city: "Seattle",
-//                                                     region: "WA",
-//                                                     country: "USA")
-//        let properties = ["userPropertyStringKey": "userProperyStringValue",
-//                          "userPropertyIntKey": 123,
-//                          "userPropertyDoubleKey": 12.34,
-//                          "userPropertyBoolKey": true] as [String: AnalyticsPropertyValue]
-//        let userProfile = AnalyticsUserProfile(name: "name",
-//                                               email: "email",
-//                                               plan: "plan",
-//                                               location: location,
-//                                               properties: properties)
-//        Amplify.Analytics.identifyUser(userId, withProfile: userProfile)
-//
-//        wait(for: [identifyUserEvent], timeout: TestCommonConstants.networkTimeout)
-//    }
-//
-//    func testRecordEventsAreFlushed() {
-//        let flushEventsInvoked = expectation(description: "Flush events invoked")
-//        _ = Amplify.Hub.listen(to: .analytics, isIncluded: nil) { payload in
-//            if payload.eventName == HubPayload.EventName.Analytics.flushEvents {
-//                // TODO: Remove exposing AWSPinpointEvent
-//                guard let pinpointEvents = payload.data as? [AWSPinpointEvent] else {
-//                    XCTFail("Missing data")
-//                    return
-//                }
-//                XCTAssertNotNil(pinpointEvents)
-//                flushEventsInvoked.fulfill()
-//            }
-//        }
-//
-//        let globalProperties = ["globalPropertyStringKey": "eventProperyStringValue",
-//                                "globalPropertyIntKey": 123,
-//                                "globalPropertyDoubleKey": 12.34,
-//                                "globalPropertyBoolKey": true] as [String: AnalyticsPropertyValue]
-//        Amplify.Analytics.registerGlobalProperties(globalProperties)
-//        let properties = ["eventPropertyStringKey": "eventProperyStringValue",
-//                          "eventPropertyIntKey": 123,
-//                          "eventPropertyDoubleKey": 12.34,
-//                          "eventPropertyBoolKey": true] as [String: AnalyticsPropertyValue]
-//        let event = BasicAnalyticsEvent(name: "eventName", properties: properties)
-//        Amplify.Analytics.record(event: event)
-//        Amplify.Analytics.flushEvents()
-//
-//        wait(for: [flushEventsInvoked], timeout: TestCommonConstants.networkTimeout)
-//    }
+    func testSearchForText() {
+        let expResult = expectation(description: "Receive result")
+
+        Amplify.Geo.search(for: searchText, area: .near(coordinates)) { result in
+            switch result {
+            case .failure(let error):
+                XCTFail("Failed with error: \(error)")
+            case .success(let places):
+                XCTAssertFalse(places.isEmpty)
+                expResult.fulfill()
+            }
+        }
+
+        waitForExpectations(timeout: timeout)
+    }
+
+    func testSearchForCoordinates() {
+        let expResult = expectation(description: "Receive result")
+
+        Amplify.Geo.search(for: coordinates) { result in
+            switch result {
+            case .failure(let error):
+                XCTFail("Failed with error: \(error)")
+            case .success(let places):
+                XCTAssertFalse(places.isEmpty)
+                XCTAssertNotNil(places.first?.coordinates)
+                expResult.fulfill()
+            }
+        }
+
+        waitForExpectations(timeout: timeout)
+    }
+
+    func testGetDefaultMap() {
+        let map = Amplify.Geo.getDefaultMap()
+        XCTAssertNotNil(map)
+        XCTAssertNotNil(map?.mapName)
+        XCTAssertNotNil(map?.style)
+        XCTAssertNotNil(map?.styleURL)
+    }
+
+    func testGetAvailtableMaps() {
+        let maps = Amplify.Geo.getAvailableMaps()
+        XCTAssertFalse(maps.isEmpty)
+        XCTAssertNotNil(maps.first?.mapName)
+        XCTAssertNotNil(maps.first?.style)
+        XCTAssertNotNil(maps.first?.styleURL)
+    }
 
     func testGetEscapeHatch() throws {
         let plugin = try Amplify.Geo.getPlugin(for: "awsLocationGeoPlugin")

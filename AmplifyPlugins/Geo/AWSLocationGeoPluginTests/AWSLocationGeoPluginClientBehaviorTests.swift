@@ -32,7 +32,7 @@ class AWSLocationGeoPluginClientBehaviorTests: AWSLocationGeoPluginTestBase {
 
     func testSearchForTextWithOptions() {
         let text = "starbucks"
-        let coords = Geo.Coordinates(latitude: 39.5186, longitude: -104.7614)
+        let coords = Geo.Coordinates(latitude: 39.7392, longitude: -104.9903)
         let countries: [Geo.Country] = [.USA, .CAN]
         let maxResults = 5
         let searchIndex = GeoPluginTestConfig.searchIndex
@@ -77,7 +77,7 @@ class AWSLocationGeoPluginClientBehaviorTests: AWSLocationGeoPluginTestBase {
     }
 
     func testSearchForCoordinates() {
-        let coords = Geo.Coordinates(latitude: 39.5186, longitude: -104.7614)
+        let coords = Geo.Coordinates(latitude: 39.7392, longitude: -104.9903)
         let expResult = expectation(description: "Receive result")
         geoPlugin.search(for: coords) { [weak self] result in
             switch result {
@@ -94,7 +94,7 @@ class AWSLocationGeoPluginClientBehaviorTests: AWSLocationGeoPluginTestBase {
     }
 
     func testSearchForCoordinatesWithOptions() {
-        let coords = Geo.Coordinates(latitude: 39.5186, longitude: -104.7614)
+        let coords = Geo.Coordinates(latitude: 39.7392, longitude: -104.9903)
         let maxResults = 5
         let searchIndex = GeoPluginTestConfig.searchIndex
         let expResult = expectation(description: "Receive result")
@@ -119,7 +119,7 @@ class AWSLocationGeoPluginClientBehaviorTests: AWSLocationGeoPluginTestBase {
 
     func testSearchForCoordinatesWithoutConfigFails() {
         geoPlugin.pluginConfig = emptyPluginConfig
-        let coords = Geo.Coordinates(latitude: 39.5186, longitude: -104.7614)
+        let coords = Geo.Coordinates(latitude: 39.7392, longitude: -104.9903)
 
         var reachedPoint1 = false
         var reachedPoint2 = false
