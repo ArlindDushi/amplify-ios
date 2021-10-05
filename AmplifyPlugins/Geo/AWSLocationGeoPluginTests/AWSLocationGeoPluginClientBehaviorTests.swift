@@ -12,33 +12,35 @@ import CwlPreconditionTesting
 import XCTest
 
 class AWSLocationGeoPluginClientBehaviorTests: AWSLocationGeoPluginTestBase {
+    let searchText = "coffee shop"
+    let coordinates = Geo.Coordinates(latitude: 39.7392, longitude: -104.9903)
+
     // MARK: - Search
     func testSearchForText() {
-        let text = "starbucks"
         let expResult = expectation(description: "Receive result")
-        geoPlugin.search(for: text) { [weak self] result in
+
+        geoPlugin.search(for: searchText) { [weak self] result in
             switch result {
             case .failure(let error):
                 XCTFail("Failed with error: \(error)")
             case .success:
                 let request = AWSLocationSearchPlaceIndexForTextRequest()!
-                request.text = text
+                request.text = self?.searchText
                 self?.mockLocation.verifySearchPlaceIndexForText(request)
                 expResult.fulfill()
             }
         }
+
         waitForExpectations(timeout: GeoPluginTestConfig.timeout)
     }
 
     func testSearchForTextWithOptions() {
-        let text = "starbucks"
-        let coords = Geo.Coordinates(latitude: 39.7392, longitude: -104.9903)
         let countries: [Geo.Country] = [.USA, .CAN]
         let maxResults = 5
         let searchIndex = GeoPluginTestConfig.searchIndex
         let expResult = expectation(description: "Receive result")
-        geoPlugin.search(for: text,
-                         area: .near(coords),
+        geoPlugin.search(for: searchText,
+                         area: .near(coordinates),
                          countries: countries,
                          maxResults: maxResults,
                          placeIndexName: searchIndex) { [weak self] result in
@@ -48,8 +50,9 @@ class AWSLocationGeoPluginClientBehaviorTests: AWSLocationGeoPluginTestBase {
                 XCTFail("Failed with error: \(error)")
             case .success:
                 let request = AWSLocationSearchPlaceIndexForTextRequest()!
-                request.text = text
-                request.biasPosition = [coords.longitude as NSNumber, coords.latitude as NSNumber]
+                request.text = self?.searchText
+                request.biasPosition = [(self?.coordinates.longitude ?? 0) as NSNumber,
+                                        (self?.coordinates.latitude ?? 0) as NSNumber]
                 request.filterCountries = countries.map { String(describing: $0) }
                 request.maxResults = maxResults as NSNumber
                 request.indexName = searchIndex
@@ -62,13 +65,12 @@ class AWSLocationGeoPluginClientBehaviorTests: AWSLocationGeoPluginTestBase {
 
     func testSearchForTextWithoutConfigFails() {
         geoPlugin.pluginConfig = emptyPluginConfig
-        let text = "starbucks"
 
         var reachedPoint1 = false
         var reachedPoint2 = false
         let missingConfigAssertion = CwlPreconditionTesting.catchBadInstruction {
             reachedPoint1 = true
-            self.geoPlugin.search(for: text) { _ in }
+            self.geoPlugin.search(for: self.searchText) { _ in }
             reachedPoint2 = true
         }
         XCTAssertNotNil(missingConfigAssertion)
@@ -77,15 +79,16 @@ class AWSLocationGeoPluginClientBehaviorTests: AWSLocationGeoPluginTestBase {
     }
 
     func testSearchForCoordinates() {
-        let coords = Geo.Coordinates(latitude: 39.7392, longitude: -104.9903)
         let expResult = expectation(description: "Receive result")
-        geoPlugin.search(for: coords) { [weak self] result in
+
+        geoPlugin.search(for: coordinates) { [weak self] result in
             switch result {
             case .failure(let error):
                 XCTFail("Failed with error: \(error)")
             case .success:
                 let request = AWSLocationSearchPlaceIndexForPositionRequest()!
-                request.position = [coords.longitude as NSNumber, coords.latitude as NSNumber]
+                request.position = [(self?.coordinates.longitude ?? 0) as NSNumber,
+                                    (self?.coordinates.latitude ?? 0) as NSNumber]
                 self?.mockLocation.verifySearchPlaceIndexForPosition(request)
                 expResult.fulfill()
             }
@@ -94,11 +97,10 @@ class AWSLocationGeoPluginClientBehaviorTests: AWSLocationGeoPluginTestBase {
     }
 
     func testSearchForCoordinatesWithOptions() {
-        let coords = Geo.Coordinates(latitude: 39.7392, longitude: -104.9903)
         let maxResults = 5
         let searchIndex = GeoPluginTestConfig.searchIndex
         let expResult = expectation(description: "Receive result")
-        geoPlugin.search(for: coords,
+        geoPlugin.search(for: coordinates,
                          maxResults: maxResults,
                          placeIndexName: searchIndex) { [weak self] result in
 
@@ -107,7 +109,8 @@ class AWSLocationGeoPluginClientBehaviorTests: AWSLocationGeoPluginTestBase {
                 XCTFail("Failed with error: \(error)")
             case .success:
                 let request = AWSLocationSearchPlaceIndexForPositionRequest()!
-                request.position = [coords.longitude as NSNumber, coords.latitude as NSNumber]
+                request.position = [(self?.coordinates.longitude ?? 0) as NSNumber,
+                                    (self?.coordinates.latitude ?? 0) as NSNumber]
                 request.maxResults = maxResults as NSNumber
                 request.indexName = searchIndex
                 self?.mockLocation.verifySearchPlaceIndexForPosition(request)
@@ -119,13 +122,12 @@ class AWSLocationGeoPluginClientBehaviorTests: AWSLocationGeoPluginTestBase {
 
     func testSearchForCoordinatesWithoutConfigFails() {
         geoPlugin.pluginConfig = emptyPluginConfig
-        let coords = Geo.Coordinates(latitude: 39.7392, longitude: -104.9903)
 
         var reachedPoint1 = false
         var reachedPoint2 = false
         let missingConfigAssertion = CwlPreconditionTesting.catchBadInstruction {
             reachedPoint1 = true
-            self.geoPlugin.search(for: coords) { _ in }
+            self.geoPlugin.search(for: self.coordinates) { _ in }
             reachedPoint2 = true
         }
         XCTAssertNotNil(missingConfigAssertion)
