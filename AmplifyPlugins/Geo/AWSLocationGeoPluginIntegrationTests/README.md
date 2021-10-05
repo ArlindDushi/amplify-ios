@@ -6,8 +6,6 @@ The following steps demonstrate how to set up Geo. Auth category is also require
 
 1. `amplify init`
 
-If amplify-cli fails to add amplifyconfiguration.json and awsconfiguration to your project, add them manually by dragging them into Xcode.
-
 2. `amplify add geo`
 
 ```perl
@@ -34,10 +32,6 @@ If amplify-cli fails to add amplifyconfiguration.json and awsconfiguration to yo
 
 4. `amplify push`
 
-[temporary step]: Until Amplify CLI supports adding the auth section into amplifyconfiguation.json, copy `awsconfiguration.json`'s auth section over
+5. Import `amplifyconfiguration.json` into Xcode under `HostApp/Configuration` to add it to the `HostApp` target.
 
-4. Copy `amplifyconfiguration.json` over to folder `AWSPinpointAnalyticPluginIntegrationTests` as `AWSPinpointAnalyticsPluginIntegrationTests-amplifyconfiguration.json`
-
-5. You can now run all of the integration tests. 
-
-6. You can run `amplify console analytics` to check what happens at the backend. 
+6. You can now run all of the integration tests. 
