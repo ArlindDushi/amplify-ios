@@ -8,9 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		15929E525CFA9D694FCA2F87 /* Pods_HostApp_AWSLocationGeoPluginIntegrationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF0D73B593F84FA242798845 /* Pods_HostApp_AWSLocationGeoPluginIntegrationTests.framework */; };
-		21233DFA2475C8BB00039337 /* AWSPinpointAnalyticsPluginIntegrationTests-amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 21233DF92475C8BA00039337 /* AWSPinpointAnalyticsPluginIntegrationTests-amplifyconfiguration.json */; };
 		21233E042475CAD500039337 /* AWSLocationGeoPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B478F5FB2374DBF400C4F92B /* AWSLocationGeoPlugin.framework */; };
-		21233E0A2475CAED00039337 /* AWSPinpointAnalyticsPluginIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B478F77B2375046300C4F92B /* AWSPinpointAnalyticsPluginIntegrationTests.swift */; };
+		21233E0A2475CAED00039337 /* AWSLocationGeoPluginIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B478F77B2375046300C4F92B /* AWSLocationGeoPluginIntegrationTests.swift */; };
 		45AAEBD87BFFC435BA11B4CF /* Pods_HostApp_AWSLocationGeoPluginTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8056ED717FACD718CC6BFA9 /* Pods_HostApp_AWSLocationGeoPluginTests.framework */; };
 		5C1978DF27055D2700F9C11E /* GeoPluginConfigError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1978DE27055D2700F9C11E /* GeoPluginConfigError.swift */; };
 		5C1979042707D2A200F9C11E /* AWSLocationGeoPluginConfiguration+Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1979032707D2A200F9C11E /* AWSLocationGeoPluginConfiguration+Keys.swift */; };
@@ -70,9 +69,7 @@
 /* Begin PBXFileReference section */
 		038C7B72396AB5DA637652D3 /* Pods_AWSLocationGeoPlugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AWSLocationGeoPlugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1819074401E1D9FF699468CB /* Pods_HostApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HostApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		21233DF92475C8BA00039337 /* AWSPinpointAnalyticsPluginIntegrationTests-amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "AWSPinpointAnalyticsPluginIntegrationTests-amplifyconfiguration.json"; sourceTree = "<group>"; };
 		21233DFF2475CAD400039337 /* AWSLocationGeoPluginIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AWSLocationGeoPluginIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		21233E032475CAD500039337 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E62FABB50DC2FD9B9C50212 /* Pods-HostApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HostApp.release.xcconfig"; path = "Target Support Files/Pods-HostApp/Pods-HostApp.release.xcconfig"; sourceTree = "<group>"; };
 		4FBA1DE775DC1753EE8F3CEE /* Pods-HostApp-AWSLocationGeoPluginIntegrationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HostApp-AWSLocationGeoPluginIntegrationTests.release.xcconfig"; path = "Target Support Files/Pods-HostApp-AWSLocationGeoPluginIntegrationTests/Pods-HostApp-AWSLocationGeoPluginIntegrationTests.release.xcconfig"; sourceTree = "<group>"; };
 		5C1978DE27055D2700F9C11E /* GeoPluginConfigError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoPluginConfigError.swift; sourceTree = "<group>"; };
@@ -84,6 +81,7 @@
 		5CB2BEA526FD377000C030C6 /* AWSLocationGeoPlugin+Reset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AWSLocationGeoPlugin+Reset.swift"; sourceTree = "<group>"; };
 		5CB2BEAB26FD378F00C030C6 /* AWSLocationGeoPluginConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSLocationGeoPluginConfiguration.swift; sourceTree = "<group>"; };
 		5CC7F8E82709F5D900EB2C0C /* GeoPluginTestConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoPluginTestConfig.swift; sourceTree = "<group>"; };
+		5CE2F0B0270CCDF4002B32AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A93172EA27F7BA39FC0B4E8 /* Pods-AWSLocationGeoPlugin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AWSLocationGeoPlugin.debug.xcconfig"; path = "Target Support Files/Pods-AWSLocationGeoPlugin/Pods-AWSLocationGeoPlugin.debug.xcconfig"; sourceTree = "<group>"; };
 		77A2315FDA5962B9A8FD9E80 /* Pods-HostApp-AWSLocationGeoPluginTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HostApp-AWSLocationGeoPluginTests.debug.xcconfig"; path = "Target Support Files/Pods-HostApp-AWSLocationGeoPluginTests/Pods-HostApp-AWSLocationGeoPluginTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B478F5FB2374DBF400C4F92B /* AWSLocationGeoPlugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AWSLocationGeoPlugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,7 +106,7 @@
 		B478F766237503B700C4F92B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B478F767237503B700C4F92B /* AWSLocationGeoPluginTestBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSLocationGeoPluginTestBase.swift; sourceTree = "<group>"; };
 		B478F768237503B700C4F92B /* AWSLocationGeoPluginClientBehaviorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSLocationGeoPluginClientBehaviorTests.swift; sourceTree = "<group>"; };
-		B478F77B2375046300C4F92B /* AWSPinpointAnalyticsPluginIntegrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSPinpointAnalyticsPluginIntegrationTests.swift; sourceTree = "<group>"; };
+		B478F77B2375046300C4F92B /* AWSLocationGeoPluginIntegrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSLocationGeoPluginIntegrationTests.swift; sourceTree = "<group>"; };
 		B8056ED717FACD718CC6BFA9 /* Pods_HostApp_AWSLocationGeoPluginTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HostApp_AWSLocationGeoPluginTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7BF9570019FB8C76F67135E /* Pods-HostApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HostApp.debug.xcconfig"; path = "Target Support Files/Pods-HostApp/Pods-HostApp.debug.xcconfig"; sourceTree = "<group>"; };
 		DF0D73B593F84FA242798845 /* Pods_HostApp_AWSLocationGeoPluginIntegrationTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HostApp_AWSLocationGeoPluginIntegrationTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,9 +157,8 @@
 		21233E002475CAD500039337 /* AWSLocationGeoPluginIntegrationTests */ = {
 			isa = PBXGroup;
 			children = (
-				21233DF92475C8BA00039337 /* AWSPinpointAnalyticsPluginIntegrationTests-amplifyconfiguration.json */,
-				B478F77B2375046300C4F92B /* AWSPinpointAnalyticsPluginIntegrationTests.swift */,
-				21233E032475CAD500039337 /* Info.plist */,
+				B478F77B2375046300C4F92B /* AWSLocationGeoPluginIntegrationTests.swift */,
+				5CE2F0B0270CCDF4002B32AC /* Info.plist */,
 			);
 			path = AWSLocationGeoPluginIntegrationTests;
 			sourceTree = "<group>";
@@ -525,7 +522,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B478F6E32374E0CF00C4F92B /* Main.storyboard in Resources */,
-				21233DFA2475C8BB00039337 /* AWSPinpointAnalyticsPluginIntegrationTests-amplifyconfiguration.json in Resources */,
 				B478F6E12374E0CF00C4F92B /* Assets.xcassets in Resources */,
 				B478F6E22374E0CF00C4F92B /* LaunchScreen.storyboard in Resources */,
 			);
@@ -788,7 +784,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21233E0A2475CAED00039337 /* AWSPinpointAnalyticsPluginIntegrationTests.swift in Sources */,
+				21233E0A2475CAED00039337 /* AWSLocationGeoPluginIntegrationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -882,7 +878,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W3DRXD72QU;
-				INFOPLIST_FILE = AWSLocationPluginIntegrationTests/Info.plist;
+				INFOPLIST_FILE = AWSLocationGeoPluginIntegrationTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -903,7 +899,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W3DRXD72QU;
-				INFOPLIST_FILE = AWSLocationPluginIntegrationTests/Info.plist;
+				INFOPLIST_FILE = AWSLocationGeoPluginIntegrationTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
