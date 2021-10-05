@@ -32,7 +32,6 @@
 		B478F74C2375014E00C4F92B /* AWSLocationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B478F7312375014D00C4F92B /* AWSLocationAdapter.swift */; };
 		B478F769237503B800C4F92B /* MockAWSLocation+ClientBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = B478F75B237503B700C4F92B /* MockAWSLocation+ClientBehavior.swift */; };
 		B478F76B237503B800C4F92B /* MockAWSLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B478F75D237503B700C4F92B /* MockAWSLocation.swift */; };
-		B478F76C237503B800C4F92B /* MockAWSAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B478F75E237503B700C4F92B /* MockAWSAuthService.swift */; };
 		B478F76F237503B800C4F92B /* AWSLocationGeoPluginConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B478F762237503B700C4F92B /* AWSLocationGeoPluginConfigurationTests.swift */; };
 		B478F770237503B800C4F92B /* AWSLocationGeoPluginConfigureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B478F763237503B700C4F92B /* AWSLocationGeoPluginConfigureTests.swift */; };
 		B478F771237503B800C4F92B /* AWSLocationGeoPluginResetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B478F764237503B700C4F92B /* AWSLocationGeoPluginResetTests.swift */; };
@@ -101,7 +100,6 @@
 		B478F7312375014D00C4F92B /* AWSLocationAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSLocationAdapter.swift; sourceTree = "<group>"; };
 		B478F75B237503B700C4F92B /* MockAWSLocation+ClientBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MockAWSLocation+ClientBehavior.swift"; sourceTree = "<group>"; };
 		B478F75D237503B700C4F92B /* MockAWSLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockAWSLocation.swift; sourceTree = "<group>"; };
-		B478F75E237503B700C4F92B /* MockAWSAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockAWSAuthService.swift; sourceTree = "<group>"; };
 		B478F762237503B700C4F92B /* AWSLocationGeoPluginConfigurationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSLocationGeoPluginConfigurationTests.swift; sourceTree = "<group>"; };
 		B478F763237503B700C4F92B /* AWSLocationGeoPluginConfigureTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSLocationGeoPluginConfigureTests.swift; sourceTree = "<group>"; };
 		B478F764237503B700C4F92B /* AWSLocationGeoPluginResetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSLocationGeoPluginResetTests.swift; sourceTree = "<group>"; };
@@ -320,7 +318,6 @@
 		B478F75A237503B700C4F92B /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
-				B478F75E237503B700C4F92B /* MockAWSAuthService.swift */,
 				B478F75D237503B700C4F92B /* MockAWSLocation.swift */,
 				B478F75B237503B700C4F92B /* MockAWSLocation+ClientBehavior.swift */,
 			);
@@ -822,7 +819,6 @@
 				B478F773237503B800C4F92B /* AWSLocationGeoPluginTestBase.swift in Sources */,
 				B478F774237503B800C4F92B /* AWSLocationGeoPluginClientBehaviorTests.swift in Sources */,
 				B478F76B237503B800C4F92B /* MockAWSLocation.swift in Sources */,
-				B478F76C237503B800C4F92B /* MockAWSAuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
