@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_Amplify_AmplifyTestConfigs_AmplifyTestCommon : NSObject
+@end
+@implementation PodsDummy_Pods_Amplify_AmplifyTestConfigs_AmplifyTestCommon
+@end

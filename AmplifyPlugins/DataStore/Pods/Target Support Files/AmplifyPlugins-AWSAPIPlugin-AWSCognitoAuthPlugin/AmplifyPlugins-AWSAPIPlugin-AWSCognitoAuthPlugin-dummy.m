@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_AmplifyPlugins_AWSAPIPlugin_AWSCognitoAuthPlugin : NSObject
+@end
+@implementation PodsDummy_AmplifyPlugins_AWSAPIPlugin_AWSCognitoAuthPlugin
+@end

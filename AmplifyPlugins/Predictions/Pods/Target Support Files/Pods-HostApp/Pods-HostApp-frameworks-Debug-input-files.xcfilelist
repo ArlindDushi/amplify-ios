@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/Pods-HostApp/Pods-HostApp-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Amplify/Amplify.framework
+${BUILT_PRODUCTS_DIR}/CwlCatchException/CwlCatchException.framework
+${BUILT_PRODUCTS_DIR}/CwlPreconditionTesting/CwlPreconditionTesting.framework

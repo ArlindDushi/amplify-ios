@@ -1,0 +1,6 @@
+framework module Pods_AWSCognitoAuthPlugin_AWSCognitoAuthPluginTests {
+  umbrella header "Pods-AWSCognitoAuthPlugin-AWSCognitoAuthPluginTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

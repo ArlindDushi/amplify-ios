@@ -1,0 +1,6 @@
+framework module Pods_HostApp_AWSAPICategoryPluginTestCommon_AWSAPICategoryPluginFunctionalTests {
+  umbrella header "Pods-HostApp-AWSAPICategoryPluginTestCommon-AWSAPICategoryPluginFunctionalTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

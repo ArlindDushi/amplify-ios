@@ -1,0 +1,6 @@
+framework module Pods_AWSDataStoreCategoryPlugin_AWSDataStoreCategoryPluginTests {
+  umbrella header "Pods-AWSDataStoreCategoryPlugin-AWSDataStoreCategoryPluginTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

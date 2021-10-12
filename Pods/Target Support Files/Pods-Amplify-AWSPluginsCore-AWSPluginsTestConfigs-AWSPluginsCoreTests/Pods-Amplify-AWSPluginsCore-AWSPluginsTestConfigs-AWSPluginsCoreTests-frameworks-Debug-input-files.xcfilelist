@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/Pods-Amplify-AWSPluginsCore-AWSPluginsTestConfigs-AWSPluginsCoreTests/Pods-Amplify-AWSPluginsCore-AWSPluginsTestConfigs-AWSPluginsCoreTests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/CwlCatchException/CwlCatchException.framework
+${BUILT_PRODUCTS_DIR}/CwlPreconditionTesting/CwlPreconditionTesting.framework
+${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework

@@ -1,0 +1,6 @@
+framework module Pods_HostApp_AWSAPICategoryPluginTestCommon_RESTWithUserPoolIntegrationTests {
+  umbrella header "Pods-HostApp-AWSAPICategoryPluginTestCommon-RESTWithUserPoolIntegrationTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

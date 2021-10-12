@@ -36,7 +36,7 @@ package-lock.json
 # Stuff that can't be committed #
 ######################
 *credentials.json
-Pods
+# Pods
 Documentation
 Scripts/build.sh
 Scripts/gcovr

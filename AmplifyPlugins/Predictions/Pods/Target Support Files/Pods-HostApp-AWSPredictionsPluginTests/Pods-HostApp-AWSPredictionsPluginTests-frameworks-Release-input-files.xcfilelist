@@ -1,0 +1,12 @@
+${PODS_ROOT}/Target Support Files/Pods-HostApp-AWSPredictionsPluginTests/Pods-HostApp-AWSPredictionsPluginTests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Amplify/Amplify.framework
+${BUILT_PRODUCTS_DIR}/CwlCatchException/CwlCatchException.framework
+${BUILT_PRODUCTS_DIR}/CwlPreconditionTesting/CwlPreconditionTesting.framework
+${BUILT_PRODUCTS_DIR}/AWSComprehend/AWSComprehend.framework
+${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework
+${BUILT_PRODUCTS_DIR}/AWSPluginsCore/AWSPluginsCore.framework
+${BUILT_PRODUCTS_DIR}/AWSPolly/AWSPolly.framework
+${BUILT_PRODUCTS_DIR}/AWSRekognition/AWSRekognition.framework
+${BUILT_PRODUCTS_DIR}/AWSTextract/AWSTextract.framework
+${BUILT_PRODUCTS_DIR}/AWSTranscribeStreaming/AWSTranscribeStreaming.framework
+${BUILT_PRODUCTS_DIR}/AWSTranslate/AWSTranslate.framework

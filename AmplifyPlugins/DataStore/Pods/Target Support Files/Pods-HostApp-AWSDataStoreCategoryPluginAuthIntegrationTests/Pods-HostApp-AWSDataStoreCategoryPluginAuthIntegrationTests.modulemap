@@ -1,0 +1,6 @@
+framework module Pods_HostApp_AWSDataStoreCategoryPluginAuthIntegrationTests {
+  umbrella header "Pods-HostApp-AWSDataStoreCategoryPluginAuthIntegrationTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

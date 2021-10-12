@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_Amplify_AWSPluginsCore_AWSPluginsTestConfigs_AWSPluginsCoreTests : NSObject
+@end
+@implementation PodsDummy_Pods_Amplify_AWSPluginsCore_AWSPluginsTestConfigs_AWSPluginsCoreTests
+@end

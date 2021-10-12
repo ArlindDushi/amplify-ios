@@ -1,0 +1,6 @@
+framework module AmplifyTestCommon {
+  umbrella header "AmplifyTestCommon-umbrella.h"
+
+  export *
+  module * { export * }
+}

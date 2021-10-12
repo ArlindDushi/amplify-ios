@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_HostApp_AWSDataStoreCategoryPluginAuthIntegrationTests : NSObject
+@end
+@implementation PodsDummy_Pods_HostApp_AWSDataStoreCategoryPluginAuthIntegrationTests
+@end

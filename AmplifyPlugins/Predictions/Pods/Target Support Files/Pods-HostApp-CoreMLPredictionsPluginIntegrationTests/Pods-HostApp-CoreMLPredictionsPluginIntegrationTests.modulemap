@@ -1,0 +1,6 @@
+framework module Pods_HostApp_CoreMLPredictionsPluginIntegrationTests {
+  umbrella header "Pods-HostApp-CoreMLPredictionsPluginIntegrationTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
