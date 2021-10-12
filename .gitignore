@@ -14,7 +14,7 @@ Thumbs.db
 **/xcuserdata
 **/*.xcuserdata
 
-*.xcworkspace/
+# *.xcworkspace/
 Amplify.xcodeproj/xcuserdata
 Amplify.xcworkspace/xcuserdata
 xcuserdata
